@@ -1,0 +1,32 @@
+/*background color of submenu in Nav*/
+.m-aside-menu .m-menu__nav>.m-menu__item>.m-menu__submenu>.m-menu__subnav>.m-menu__item>.m-menu__link
+{
+	background:#000051 !important
+}
+
+
+/*color of the side Nav links*/
+.m-aside-menu.m-aside-menu--skin-dark .m-menu__nav>.m-menu__item>.m-menu__heading .m-menu__link-text, .m-aside-menu.m-aside-menu--skin-dark .m-menu__nav>.m-menu__item>.m-menu__link .m-menu__link-text {
+    color: #fff;
+}
+
+
+.m-portlet__head-text
+{
+	
+	color: #1a237e !important
+	
+}
+
+#m_aside_left
+{
+	background: #000051 !important
+}
+
+#m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-desktop-inline-block 
+{
+	color:red !important
+	
+}
+
+#000051
