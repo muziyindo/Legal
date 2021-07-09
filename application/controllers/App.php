@@ -36,6 +36,13 @@ class App extends CI_Controller
 		$this->load_view($data,$content='add_contract');
 	}
 	
+	function contracts()
+	{
+		$data['title'] = 'View Contracts';
+		$data['page_title'] = 'View Contracts';
+		$this->load_view($data,$content='view_contracts');
+	}
+	
 	
 	function load_view($data,$content)
 	{

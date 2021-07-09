@@ -29,4 +29,15 @@
 	
 }
 
-#000051
+/*Table header color*/
+.m-table.m-table--head-bg-brand thead th {
+    background: #000051 !important;
+    color: #fff;
+    border-bottom: 0;
+    border-top: 0;
+}
+
+/* Table border color*/
+.m-table.m-table--border-brand, .m-table.m-table--border-brand td, .m-table.m-table--border-brand th {
+    border-color: #000051 !important;
+}

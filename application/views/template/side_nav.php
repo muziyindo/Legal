@@ -86,7 +86,7 @@
 									<span class="m-menu__arrow"></span>
 									<ul class="m-menu__subnav">
 										<li class="m-menu__item " aria-haspopup="true" >
-											<a  href="components/icons/flaticon.html" class="m-menu__link ">
+											<a  href="<?php echo site_url('App/contracts') ?>" class="m-menu__link ">
 												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 													<span></span>
 												</i>
@@ -96,7 +96,7 @@
 											</a>
 										</li>
 										<li class="m-menu__item " aria-haspopup="true" >
-											<a  href="components/icons/fontawesome.html" class="m-menu__link ">
+											<a  href="<?php echo site_url('App/contracts') ?>" class="m-menu__link ">
 												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 													<span></span>
 												</i>
@@ -106,7 +106,7 @@
 											</a>
 										</li>
 										<li class="m-menu__item " aria-haspopup="true" >
-											<a  href="components/icons/fontawesome.html" class="m-menu__link ">
+											<a  href="<?php echo site_url('App/contracts') ?>" class="m-menu__link ">
 												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 													<span></span>
 												</i>
@@ -116,7 +116,7 @@
 											</a>
 										</li>
 										<li class="m-menu__item " aria-haspopup="true" >
-											<a  href="components/icons/fontawesome.html" class="m-menu__link ">
+											<a  href="<?php echo site_url('App/contracts') ?>" class="m-menu__link ">
 												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 													<span></span>
 												</i>
