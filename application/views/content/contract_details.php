@@ -35,7 +35,7 @@
 													</label>
 													<select name="requester_title" class="form-control m-input">
 														<option value="">-select-</option>
-														<option value="Miss">Miss</option>
+														<option value="Miss" selected>Miss</option>
 														<option value="Mrs">Mrs</option>
 														<option value="Mr">Mr</option>
 														
@@ -52,7 +52,7 @@
 														<span class="input-group-addon">
 															<i class="la la-user"></i>
 														</span>
-														<input type="text" name="requester_name" class="form-control m-input" placeholder="">
+														<input type="text" name="requester_name" class="form-control m-input" placeholder="" value="Cynthia Edeh">
 													</div>
 													<span class="m-form__help">
 														Please enter your fullname
@@ -62,7 +62,7 @@
 													<label class="">
 														Department:
 													</label>
-													<input type="text" class="form-control m-input" placeholder="Enter department" name="requester_dept">
+													<input type="text" class="form-control m-input" placeholder="Enter department" name="requester_dept" value="BDD">
 													<span class="m-form__help">
 														Please enter your department
 													</span>
@@ -97,7 +97,7 @@
 													<select name="other_party_title" class="form-control m-input">
 														<option value="">-select-</option>
 														<option value="Miss">Miss</option>
-														<option value="Mrs">Mrs</option>
+														<option value="Mrs" selected>Mrs</option>
 														<option value="Mr">Mr</option>
 														
 													</select>
@@ -109,7 +109,7 @@
 													<label class="">
 														Name:
 													</label>
-													<input type="text" class="form-control m-input" placeholder="Enter other party name" name="other_party_name">
+													<input type="text" class="form-control m-input" placeholder="Enter other party name" name="other_party_name" value="TATA Nigeria Limited">
 													<span class="m-form__help">
 														Please enter other party name
 													</span>
@@ -122,7 +122,7 @@
 														<span class="input-group-addon">
 															<i class="la la-user"></i>
 														</span>
-														<input type="text" class="form-control m-input" placeholder="enter service location" name="service_location">
+														<input type="text" class="form-control m-input" placeholder="enter service location" name="service_location" value="Ikoyi,Lagos">
 													</div>
 													<span class="m-form__help">
 														Please enter service location
@@ -136,7 +136,7 @@
 													</label>
 													<div class="m-radio-inline">
 														<label class="m-radio m-radio--solid">
-															<input type="radio" name="authorized_signatory" value="1">
+															<input type="radio" name="authorized_signatory" value="1" checked>
 															Signed
 															<span></span>
 														</label>
@@ -176,7 +176,7 @@
 													<label>
 														Phone Number:
 													</label>
-													<input type="number" class="form-control m-input" placeholder="Enter phone number" name="phone_no">
+													<input type="number" class="form-control m-input" placeholder="Enter phone number" name="phone_no" value="07084702950">
 													<span class="m-form__help">
 														Please enter phone number
 													</span>
@@ -185,7 +185,7 @@
 													<label class="">
 														Email:
 													</label>
-													<input type="email" class="form-control m-input" placeholder="Enter email" name="email">
+													<input type="email" class="form-control m-input" placeholder="Enter email" name="email" value="imoh@tatanigeria.com">
 													<span class="m-form__help">
 														Please enter email
 													</span>
@@ -198,7 +198,7 @@
 														<span class="input-group-addon">
 															<i class="la la-user"></i>
 														</span>
-														<input type="text" class="form-control m-input" placeholder="" name="address">
+														<input type="text" class="form-control m-input" placeholder="" name="address" value="34 Burma road, apapa lagos">
 													</div>
 													<span class="m-form__help">
 														Please enter address
@@ -228,9 +228,9 @@
 											<div class="form-group m-form__group row">
 												<div class="col-lg-4">
 													<label>
-														Contract Duration:
+														Contract Duration (in months):
 													</label>
-													<input type="text" class="form-control m-input" placeholder="Enter contract duration" name="contract_duration">
+													<input type="text" class="form-control m-input" placeholder="Enter contract duration" name="contract_duration" value="12">
 													<span class="m-form__help">
 														Please enter contract duration
 													</span>
@@ -239,7 +239,7 @@
 													<label class="">
 														Proposed Start Date:
 													</label>
-													<input type="text" class="form-control m-input" placeholder="Enter start date" name="proposed_start_date">
+													<input type="text" class="form-control m-input" placeholder="Enter start date" name="proposed_start_date" value="2021-08-11">
 													<span class="m-form__help">
 														Please enter proposed start date
 													</span>
@@ -252,7 +252,7 @@
 														<span class="input-group-addon">
 															<i class="la la-user"></i>
 														</span>
-														<input type="text" class="form-control m-input" placeholder="" name="proposed_end_date">
+														<input type="text" class="form-control m-input" placeholder="" name="proposed_end_date" value="2022-08-11">
 													</div>
 													<span class="m-form__help">
 														Please enter proposed end date
@@ -295,7 +295,7 @@
 													<label>
 														Termination Notice:
 													</label>
-													<input type="text" class="form-control m-input" placeholder="Enter termination notice" name="termination_notice">
+													<input type="text" class="form-control m-input" placeholder="Enter termination notice" name="termination_notice" value="1 month before end date">
 													<span class="m-form__help">
 														Please enter termination notice
 													</span>
@@ -304,7 +304,7 @@
 													<label class="">
 														Payment Term:
 													</label>
-													<input type="text" class="form-control m-input" placeholder="Enter payment term" name="payment_term">
+													<input type="text" class="form-control m-input" placeholder="Enter payment term" name="payment_term" value="3 installmental payment">
 													<span class="m-form__help">
 														Please enter payment term
 													</span>
@@ -317,7 +317,7 @@
 														<span class="input-group-addon">
 															<i class="la la-user"></i>
 														</span>
-														<input type="text" class="form-control m-input" placeholder="enter Lease or sale of equipment" name="sale_of_equipment">
+														<input type="text" class="form-control m-input" placeholder="enter Lease or sale of equipment" name="sale_of_equipment" value="">
 													</div>
 													<span class="m-form__help">
 														Please enter Lease or sale of equipment

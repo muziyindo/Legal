@@ -41,3 +41,9 @@
 .m-table.m-table--border-brand, .m-table.m-table--border-brand td, .m-table.m-table--border-brand th {
     border-color: #000051 !important;
 }
+
+/* Form category header background color - applied to the add_contract form */
+.m-portlet__head{
+ background:#c4c5d6 !important; 	
+}
+

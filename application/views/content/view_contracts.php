@@ -102,7 +102,7 @@
 														Pending Review
 													</td>
 													<td>
-														<a href="#" class="btn btn-accent m-btn m-btn--icon m-btn--pill m-btn--air">
+														<a href="<?php echo site_url('App/contractDetails')  ?>" class="btn btn-accent m-btn m-btn--icon m-btn--pill m-btn--air">
 															<span>
 																<i class="la la-eye"></i>
 																<span>
@@ -138,7 +138,7 @@
 														Pending Review
 													</td>
 													<td>
-														<a href="#" class="btn btn-accent m-btn m-btn--icon m-btn--pill m-btn--air">
+														<a href="<?php echo site_url('App/contractDetails')  ?>" class="btn btn-accent m-btn m-btn--icon m-btn--pill m-btn--air">
 															<span>
 																<i class="la la-eye"></i>
 																<span>

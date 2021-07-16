@@ -43,6 +43,13 @@ class App extends CI_Controller
 		$this->load_view($data,$content='view_contracts');
 	}
 	
+	function contractDetails()
+	{
+		$data['title'] = 'Contract Details';
+		$data['page_title'] = 'Mr. Akeem Gbolagade Contract Details';
+		$this->load_view($data,$content='contract_details');
+	}
+	
 	
 	function load_view($data,$content)
 	{
