@@ -85,8 +85,17 @@
 		<script src="<?php echo base_url('assets/vendors/base/vendors.bundle.js') ?>" type="text/javascript"></script>
 		<script src="<?php echo base_url('assets/demo/default/base/scripts.bundle.js') ?>" type="text/javascript"></script>
 		<!--end::Base Scripts -->
+		
+		<?php if($page_title == "New Contract"){ ?>
+			<script src="<?php echo base_url('assets/demo/default/custom/components/forms/widgets/bootstrap-datepicker.js') ?>" type="text/javascript"></script>
+		
+		<?php }	?>
+		
+		
+		
 		<!--begin::Page Snippets -->
 		<script src="<?php echo base_url('assets/app/js/dashboard.js') ?>" type="text/javascript"></script>
+		
 		<!--end::Page Snippets -->
 	</body>
 	<!-- end::Body -->

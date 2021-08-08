@@ -29,7 +29,7 @@ class Site extends CI_Controller
    {
 		$username = $this->input->post('email');
 		$password = $this->input->post('password');
-		$check = $this->db->query("SELECT * FROM applicants WHERE username='$username'");
+		$check = $this->db->query("SELECT * FROM users WHERE username='$username'");
 		
 		if($check->num_rows()>0)
 		{ 

@@ -143,7 +143,7 @@
 									<span class="m-menu__arrow"></span>
 									<ul class="m-menu__subnav">
 										<li class="m-menu__item " aria-haspopup="true" >
-											<a  href="components/icons/flaticon.html" class="m-menu__link ">
+											<a  href="<?php echo site_url('admin/addUser') ?>" class="m-menu__link ">
 												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 													<span></span>
 												</i>
@@ -153,7 +153,7 @@
 											</a>
 										</li>
 										<li class="m-menu__item " aria-haspopup="true" >
-											<a  href="components/icons/fontawesome.html" class="m-menu__link ">
+											<a  href="<?php echo site_url('admin/viewUsers') ?>" class="m-menu__link ">
 												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 													<span></span>
 												</i>
@@ -196,7 +196,10 @@
 						<div class="d-flex align-items-center">
 							<div class="mr-auto">
 								<h3 class="m-subheader__title m-subheader__title--separator">
-									<?php echo $page_title ?>
+									<?php echo $page_title ?> 
+									<!--<span class="m-badge m-badge--success"></span> -->
+									<span class="m-badge m-badge--warning"></span>
+									<!--<span class="m-badge m-badge--danger"></span>-->
 								</h3>
 								<ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
 									<li class="m-nav__item m-nav__item--home">

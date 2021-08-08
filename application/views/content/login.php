@@ -45,7 +45,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				background-color: #000051;
 				border-color: #000051;
 			}
-		
+			
 		
 		</style>
 	</head>
@@ -70,9 +70,44 @@ License: You must have a valid license purchased only from themeforest(the above
 											Sign In To Admin
 										</h3>
 									</div>
-									<form class="m-login__form m-form" method="post" action="<?php echo site_url('App') ?>">
+									<div>
+											<?php 
+												if(validation_errors()) 
+													echo '<div style="color:red">'.validation_errors().'</div>';
+											?>
+									</div>
+									<?php
+										$message=$this->session->flashdata('message');
+										if($message=="invalid_password")
+										{
+									?>
+									<div class="alert alert-block alert-warning">
+										<button data-dismiss="alert" class="close close-sm" type="button">
+											<!--<i class="fa fa-times"></i>-->
+										</button>
+										Incorrect Login details - password
+									</div>
+									<?php
+										}
+									?>
+				   
+									<?php
+										$message=$this->session->flashdata('message');
+										if($message=="invalid_user")
+										{
+										?>
+											<div class="alert alert-block alert-warning">
+												<button data-dismiss="alert" class="close close-sm" type="button">
+													<!--<i class="fa fa-times"></i>-->
+												</button>
+												Incorrect Login details - username
+											</div>
+										<?php
+										}
+									?>
+									<form class="m-login__form m-form" method="post" action="<?php echo site_url('Account/authenticate') ?>">
 										<div class="form-group m-form__group">
-											<input class="form-control m-input" type="text" placeholder="Email" name="email" autocomplete="off">
+											<input class="form-control m-input" type="email" placeholder="Email" name="username" autocomplete="off">
 										</div>
 										<div class="form-group m-form__group">
 											<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" name="password">
@@ -92,7 +127,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											</div>
 										</div>
 										<div class="m-login__form-action">
-											<button id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air m-loader m-loader--right m-loader--light" >
+											<button type="submit" id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air m-loader m-loader--right m-loader--light" >
 												Sign In
 											</button>
 										</div>
@@ -182,7 +217,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						</div>--->
 					</div>
 				</div>
-				<div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content" style="background-image: url(<?php  echo base_url('assets/app/media/img//bg/bg-4.jpg') ?>)">
+				<div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content" style="background-image: url(<?php  echo base_url('assets/app/media/img//bg/bg-4.jpg') ?>); background-size:auto%; background-repeat:no-repeat">
 					<div class="m-grid__item m-grid__item--middle">
 						<h3 class="m-login__welcome">
 							Managed IT Solutions

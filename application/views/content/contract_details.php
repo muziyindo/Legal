@@ -324,9 +324,281 @@
 													</span>
 												</div>
 											</div>
-											
-											
 										</div>
+										
+										
+										<div class="m-portlet__head bg-light">
+										<div class="m-portlet__head-caption">
+											<div class="m-portlet__head-title">
+												<span class="m-portlet__head-icon m--hide">
+													<i class="la la-gear"></i>
+												</span>
+												<h3 class="m-portlet__head-text">
+													Legal Officer processing outcome
+												</h3>
+											</div>
+										</div>
+										</div>
+										
+								<div class="m-portlet__body">
+								
+									<div class="form-group m-form__group row">
+										<table class="table table-striped">
+											<thead>
+												<tr>
+													<th>
+													</th>
+													<th>
+														Status
+													</th>
+													<th>
+														Comment
+													</th>
+													
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													
+													<th scope="row" style="background:#e9ecef;">
+														Review
+													</th>
+													<td>
+														Pass <i class="la la-check" style="color:green; font-weight:bold"></i>
+													</td>
+													<td>
+														Details entered meet all requirements
+													</td>
+													
+												</tr>
+												<tr>
+													<th scope="row">
+														Validate
+													</th>
+													<td>
+														Fail <i class="la la-close" style="color:red; font-weight:bold"></i>
+													</td>
+													<td>
+														24 Months
+													</td>
+													
+												</tr>
+												<tr>
+													<th scope="row" style="background:#e9ecef;">
+														Sign off
+													</th>
+													<td>
+														pending<div class="m-loader m-loader--brand" style="width: 30px; display: inline-block;"></div>
+													</td>
+													<td>
+														Contract duration is too long, maximum duration is a year
+													</td>
+													
+												</tr>
+												
+											</tbody>
+										</table>
+									</div>
+								
+								</div>
+								
+								
+								
+								<div class="m-portlet__head bg-light">
+										<div class="m-portlet__head-caption">
+											<div class="m-portlet__head-title">
+												<span class="m-portlet__head-icon m--hide">
+													<i class="la la-gear"></i>
+												</span>
+												<h3 class="m-portlet__head-text">
+													Legal Officer
+												</h3>
+											</div>
+										</div>
+										</div>
+								
+								
+									<div class="m-portlet__body">
+								
+									<div class="form-group m-form__group row">
+										<table class="table m-table">
+											<thead>
+												<tr>
+													<th>
+													</th>
+													<th>
+														
+													</th>
+													<th>
+														
+													</th>
+													<th>
+														
+													</th>
+													
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													
+													<th scope="row" style="background:#e9ecef;">
+														Review
+													</th>
+													<td>
+																<label class="m-radio">
+																		<input type="radio" name="review" value="1">
+																		Pass Review
+																		<span></span>
+																</label>
+													</td>
+													<td>
+																<label class="m-radio">
+																		<input type="radio" name="review" value="2">
+																		Fail Review
+																		<span></span>
+																</label>
+													</td>
+													<td>
+														<div class="form-group">
+															<label for="exampleTextarea">
+																Comment
+															</label>
+															<textarea class="form-control m-input" id="exampleTextarea" rows="3"></textarea>
+														</div>
+													</td>
+													
+												</tr>
+												<tr>
+													<th scope="row" style="background:#e9ecef;">
+														Validate
+													</th>
+													<td>
+														<label class="m-radio">
+																		<input type="radio" name="validate" value="1">
+																		Pass Validation
+																		<span></span>
+														</label>
+													</td>
+													<td>
+														<label class="m-radio">
+																		<input type="radio" name="validate" value="2">
+																		Fail Validation
+																		<span></span>
+														</label>
+													</td>
+													<td>
+														<div class="form-group">
+															<label for="exampleTextarea">
+																Comment
+															</label>
+															<textarea class="form-control m-input" id="exampleTextarea" rows="3"></textarea>
+														</div>
+													</td>
+													
+												</tr>
+												<tr>
+													<th scope="row" style="background:#e9ecef;">
+														Sign off
+													</th>
+													<td>
+														<label class="m-radio">
+																		<input type="radio" name="signoff" value="1">
+																		Pass Sign off
+																		<span></span>
+														</label>
+													</td>
+													<td>
+														<label class="m-radio">
+																		<input type="radio" name="signoff" value="2">
+																		Fail Sign off
+																		<span></span>
+														</label>
+													</td>
+													<td>
+														<div class="form-group">
+															<label for="exampleTextarea">
+																Comment
+															</label>
+															<textarea class="form-control m-input" id="exampleTextarea" rows="3"></textarea>
+														</div>
+													</td>
+													
+												</tr>
+												
+											</tbody>
+										</table>
+									</div>
+								
+								</div>
+										
+										
+										
+															<!--<div class="m-radio-list">
+																	<label class="m-radio">
+																		<input type="radio" name="example_1" value="1">
+																		Option 1
+																		<span></span>
+																	</label>
+																	<label class="m-radio">
+																		<input type="radio" name="example_1" value="2">
+																		Option 2
+																		<span></span>
+																	</label>
+																	<label class="m-radio m-radio--disabled">
+																		<input type="radio" disabled>
+																		Disabled
+																		<span></span>
+																	</label>
+																	<label class="m-radio">
+																		<input type="radio" checked="checked">
+																		Checked
+																		<span></span>
+																	</label>
+																</div>-->
+								
+								<!--<div class="m-portlet__body">
+									<div class="form-group m-form__group row">
+									<ul class="nav nav-tabs  m-tabs-line m-tabs-line--success" role="tablist">
+											<li class="nav-item m-tabs__item">
+												<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_tabs_6_1" role="tab">
+													<i class="la la-cloud-upload"></i>
+													Messages
+												</a>
+											</li>
+											<li class="nav-item m-tabs__item">
+												<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_tabs_6_2" role="tab">
+													<i class="la la-cog"></i>
+													Settings
+												</a>
+											</li>
+											
+											<li class="nav-item m-tabs__item">
+												<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_tabs_6_3" role="tab">
+													<i class="la la-puzzle-piece"></i>
+													Logs
+												</a>
+											</li>
+										</ul>
+										<div class="tab-content">
+										
+											<div class="tab-pane active" id="m_tabs_6_1" role="tabpanel" >
+												
+												
+												<span>content1 goes here</span>
+							
+											</div>
+											
+											
+											<div class="tab-pane" id="m_tabs_6_2" role="tabpanel">
+												Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever sin
+											</div>
+											<div class="tab-pane" id="m_tabs_6_3" role="tabpanel">
+												Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+											</div>
+										</div>
+									</div>
+								</div>-->
+										
 										
 										
 										

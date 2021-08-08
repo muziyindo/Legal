@@ -43,7 +43,7 @@
 								<!--begin::Section-->
 								<div class="m-section">
 									<div class="m-section__content">
-										<table class="table table-bordered m-table m-table--border-brand m-table--head-bg-brand">
+										<table class="table table-bordered table-striped <!--m-table m-table--border-brand m-table--head-bg-brand-->">
 											<thead>
 												<tr>
 													<th>

@@ -253,7 +253,7 @@
 										<li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img  m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
 											<a href="#" class="m-nav__link m-dropdown__toggle">
 												<span class="m-topbar__userpic">
-													<img src="<?php echo base_url('assets/app/media/img/users/user4.jpg') ?>" class="m--img-rounded m--marginless m--img-centered" alt=""/>
+													<img src="<?php echo base_url($this->session->userdata('pimage')); ?>" class="m--img-rounded m--marginless m--img-centered" alt=""/>
 												</span>
 												<span class="m-topbar__username m--hide">
 													Nick
@@ -265,16 +265,21 @@
 													<div class="m-dropdown__header m--align-center" style="background: url(<?php echo base_url('assets/app/media/img/misc/user_profile_bg.jpg') ?>); background-size: cover;">
 														<div class="m-card-user m-card-user--skin-dark">
 															<div class="m-card-user__pic">
-																<img src="<?php echo base_url('assets/app/media/img/users/user4.jpg') ?>" class="m--img-rounded m--marginless" alt=""/>
+																<img src="<?php echo base_url($this->session->userdata('pimage')) ?>" class="m--img-rounded m--marginless" alt=""/>
 															</div>
 															<div class="m-card-user__details">
 																<span class="m-card-user__name m--font-weight-500">
-																	Mark Andre
+																	<?php echo $this->session->userdata('name'); ?>
 																</span>
-																<a href="" class="m-card-user__email m--font-weight-300 m-link">
-																	mark.andre@gmail.com
+																<a href="#" class="m-card-user__email m--font-weight-300 m-link">
+																	<?php echo $this->session->userdata('email'); ?>
+																</a>
+																<br />
+																<a href="#" class="m-card-user__name m--font-weight-500">
+																	<?php echo $this->session->userdata('role'); ?>
 																</a>
 															</div>
+															
 														</div>
 													</div>
 													<div class="m-dropdown__body">
@@ -286,7 +291,7 @@
 																	</span>
 																</li>
 																<li class="m-nav__item">
-																	<a href="header/profile.html" class="m-nav__link">
+																	<a href="#" class="m-nav__link">
 																		<i class="m-nav__link-icon flaticon-profile-1"></i>
 																		<span class="m-nav__link-title">
 																			<span class="m-nav__link-wrap">
@@ -305,7 +310,7 @@
 															
 																<li class="m-nav__separator m-nav__separator--fit"></li>
 																<li class="m-nav__item">
-																	<a href="<?php echo site_url('SIte') ?>" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">
+																	<a href="<?php echo site_url('Account/logout') ?>" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">
 																		Logout
 																	</a>
 																</li>

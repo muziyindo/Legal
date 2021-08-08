@@ -18,227 +18,25 @@ class Admin extends CI_Controller
 		$role = $this->session->userdata('role');
         if ($ud < 1)
         {
-              redirect('user_login','refresh');
+              redirect('Account','refresh');
         }
 		else
         {
-        	if($role != "admin")
+        	if($role != "Admin")
         	{
-        		redirect('user_login','refresh');
+        		redirect('Account','refresh');
         	}
         }
 	}
 	
-	function addPartner()
-	{
-		$data['title'] = 'Add Partner';
-		$data['page_title'] = 'New Partner';
-		$this->load->view('header/header',$data);
-		$this->load->view('content/add_partner');
-		$this->load->view('footer/footer');
-	}
-	
-	function storePartner()
-	{
-		$this->form_validation->set_rules('partnerName', 'Partner Name', 'trim|required|is_unique[mf_banks.bank]');
-		if ($this->form_validation->run() == FALSE)
-		{
-			//$this->addPartner();
-			echo validation_errors();
-		}
-		else
-		{
-			$this->admin_model->storePartner();
-            $num_inserts = $this->db->affected_rows();
-            if($num_inserts=="1")
-            {
-				echo "success";
-				/*$this->session->set_flashdata('message', 'partner_added');
-                redirect('admin/addPartner');*/
-			}
-			else
-			{
-				echo "There is an issue";
-			}
-		}
-	}
-	
-	function viewPartners()
-	{
-		$data['data'] = $this->admin_model->getPartners();
-		$data['title'] = 'Partners';
-		$data['page_title'] = 'Partners';
-		$this->load->view('header/header',$data);
-		$this->load->view('content/view_partners',$data);
-		$this->load->view('footer/footer');
-	}
-	
-	function changePartnerStatus($userID_,$state)
-	{
-		$date = date('Y-m-d');
-		$userid = $this->session->userdata('userid');
-		if($state=="1")
-		{
-			$this->db->query("update mf_banks set isActive='1',dateModified='$date',modifiedBy='$userid' where id='$userID_'");
-			$num_inserts = $this->db->affected_rows();
-            if($num_inserts=="1")
-            {
-				$this->session->set_flashdata('message', 'status_changed');
-                redirect('admin/viewPartners');
-			}
-			else
-			{
-				$this->session->set_flashdata('message', 'no_change');
-                redirect('admin/viewPartners');
-			}
-		}
-		else
-		{
-			$this->db->query("update mf_banks set isActive='0',dateModified='$date',modifiedBy='$userid' where id='$userID_'");
-			$num_inserts = $this->db->affected_rows();
-            if($num_inserts=="1")
-            {
-				$this->session->set_flashdata('message', 'status_changed');
-                redirect('admin/viewPartners');
-			}
-			else
-			{
-				$this->session->set_flashdata('message', 'no_change');
-                redirect('admin/viewPartners');
-			}
-		}
-		
-	}
-	
-	function changeMemberStatus($userID_,$state)
-	{
-		$date = date('Y-m-d');
-		$userid = $this->session->userdata('userid');
-		if($state=="1")
-		{
-			$this->db->query("update members set isActive='1',dateModified='$date',modifiedBy='$userid' where id='$userID_'");
-			$num_inserts = $this->db->affected_rows();
-            if($num_inserts=="1")
-            {
-				$this->session->set_flashdata('message', 'status_changed');
-                redirect('admin/viewMembers');
-			}
-			else
-			{
-				$this->session->set_flashdata('message', 'no_change');
-                redirect('admin/viewMembers');
-			}
-		}
-		else
-		{
-			$this->db->query("update members set isActive='0',dateModified='$date',modifiedBy='$userid' where id='$userID_'");
-			$num_inserts = $this->db->affected_rows();
-            if($num_inserts=="1")
-            {
-				$this->session->set_flashdata('message', 'status_changed');
-                redirect('admin/viewMembers');
-			}
-			else
-			{
-				$this->session->set_flashdata('message', 'no_change');
-                redirect('admin/viewMembers');
-			}
-		}
-		
-	}
 	
 	
-	function changeUserStatus($userID_,$state)
-	{
-		$date = date('Y-m-d');
-		$userid = $this->session->userdata('userid');
-		if($state=="1")
-		{
-			$this->db->query("update users set isActive='1',last_modified='$date',action_user='$userid' where id='$userID_'");
-			$num_inserts = $this->db->affected_rows();
-            if($num_inserts=="1")
-            {
-				$this->session->set_flashdata('message', 'status_changed');
-                redirect('admin/viewUsers');
-			}
-			else
-			{
-				$this->session->set_flashdata('message', 'no_change');
-                redirect('admin/viewUsers');
-			}
-		}
-		else
-		{
-			$this->db->query("update users set isActive='0',last_modified='$date',action_user='$userid' where id='$userID_'");
-			$num_inserts = $this->db->affected_rows();
-            if($num_inserts=="1")
-            {
-				$this->session->set_flashdata('message', 'status_changed');
-                redirect('admin/viewUsers');
-			}
-			else
-			{
-				$this->session->set_flashdata('message', 'no_change');
-                redirect('admin/viewUsers');
-			}
-		}
-		
-	}
-	
-	function addMember()
-	{
-		$data['title'] = 'Add Member';
-		$data['page_title'] = 'New Member';
-		$this->load->view('header/header',$data);
-		$this->load->view('content/add_member');
-		$this->load->view('footer/footer');
-	}
-	
-	function storeMember()
-	{
-		$this->form_validation->set_rules('memberName', 'Member Name', 'trim|required');
-		$this->form_validation->set_rules('oracleNumber', 'Oracle Number', 'trim|required|numeric|is_unique[members.oracleNumber]');
-		$this->form_validation->set_rules('loanBalance', 'Loan Balance', 'trim|required|numeric');
-		$this->form_validation->set_rules('savingsBalance', 'Savings Balance', 'trim|required|numeric');
-		if ($this->form_validation->run() == FALSE)
-		{
-			//$this->addPartner();
-			echo validation_errors();
-		}
-		else
-		{
-			$this->admin_model->storeMember();
-            $num_inserts = $this->db->affected_rows();
-            if($num_inserts=="1")
-            {
-				echo "success";
-				/*$this->session->set_flashdata('message', 'partner_added');
-                redirect('admin/addPartner');*/
-			}
-			else
-			{
-				echo "There is an issue";
-			}
-		}
-	}
-	
-	function viewMembers()
-	{
-		$data['data'] = $this->admin_model->getMembers();
-		$data['title'] = 'Partners';
-		$data['page_title'] = 'Partners';
-		$this->load->view('header/header',$data);
-		$this->load->view('content/view_members',$data);
-		$this->load->view('footer/footer');
-	}
 	
 	function addUser()
 	{
-		$data['title'] = 'New user';
-		$data['page_title'] = 'Add user';
-		$this->load->view('header/header',$data);
-		$this->load->view('content/create_user');
-		$this->load->view('footer/footer');
+		$data['title'] = 'New User';
+		$data['page_title'] = 'New User Account';
+		$this->load_view($data,$content='add_user');
 	}
 	
 	function insert_user()
@@ -249,33 +47,52 @@ class Admin extends CI_Controller
 		$this->form_validation->set_message('required', 'The %s field must be filled');
 		$this->form_validation->set_rules('fullname', 'Full Name', 'trim|required');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
-		//$this->form_validation->set_rules('company', 'Company', 'trim|required');
 		$this->form_validation->set_rules('role', 'Role', 'trim|required');
-		//$this->form_validation->set_rules('username', 'Username', 'trim|required|is_unique[users.username]');
-		/*$this->form_validation->set_rules('password1', 'Password', 'required|matches[password2]');*/
-		
 		$this->form_validation->set_rules('password1', 'Password', 'trim|required|min_length[6]|matches[password2]');
         $this->form_validation->set_rules('password2', 'Password Confirmation', 'required');
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->addUser();
+			//$this->addUser();
+			echo validation_errors();
 		}
 		else
 		{
 				$this->load->model('admin_model');
-				$this->admin_model->insert_user();
+				$insertId = $this->admin_model->insert_user();
 				$num_inserts = $this->db->affected_rows();
 				if($num_inserts=="1")
 				{
-					$email = $this->input->post("email");
+					/*$email = $this->input->post("email");
 					$name = $this->input->post("fullname");
 					$password = $this->input->post("password1");
 					$message = "Hi ".$name.", <p>Your account has been successfully created, kindly find your login credentials below:</p>"."<p>Address: www.wtcooperative.com</p> <p>Username: ".$email."</p><p>Password: ".$password."<br><br>Regards,<br> WTCooperative";
 					
-					$this->mail_staff($email,$message);
-					$this->session->set_flashdata('message', 'success');
-					redirect('admin/addUser');
+					$this->mail_staff($email,$message);*/
+					$storeFolder = './uploads/pimages/';
+					if ($_FILES["doc_"]["error"]!=4)
+					{
+						$max_filesize=10000000 ; //10mb
+						$base_uploadSize = $_FILES['doc_']['size'];
+						if($base_uploadSize < $max_filesize)
+						{
+							$base_tempFile = $_FILES['doc_']['tmp_name'];
+							
+							//moving the base image
+							$targetPath =$storeFolder;
+							$temp = explode(".", $_FILES["doc_"]["name"]);
+							$base_filename = time().$_FILES["doc_"]["name"];
+							$targetFile =  $targetPath. $base_filename;
+		
+							//move file to directory
+							move_uploaded_file($base_tempFile,$targetFile); 
+							$base_path=$file_name='uploads/pimages/'.$base_filename;
+							$this->db->query("update users set profile_image='$base_path' where id='$insertId'");
+						}
+					}
+					echo $insertId;
+					/*$this->session->set_flashdata('message', 'success');
+					redirect('admin/addUser');*/
 				}
 				else
 				{
@@ -286,12 +103,10 @@ class Admin extends CI_Controller
 	
 	function viewUsers()
 	{
-		$data['all_users'] = $this->admin_model->get_all_users();
-		$data['title'] = 'users';
+		$data['users'] = $this->admin_model->getUsers();
+		$data['title'] = 'View Users';
 		$data['page_title'] = 'View Users';
-		$this->load->view('header/header',$data);
-		$this->load->view('content/view_users',$data);
-		$this->load->view('footer/footer');
+		$this->load_view($data,$content='view_users');
 	}
 	
 	function mail_staff($email,$message)
@@ -333,6 +148,16 @@ class Admin extends CI_Controller
 			$this->email->subject('Your Login credentials');
 			$this->email->message($message);
 			$this->email->send();
+	}
+	
+	function load_view($data,$content)
+	{
+		#$data['title'] = 'Dashboard';
+		$this->load->view('template/header',$data);
+		$this->load->view('template/top_nav',$data);
+		$this->load->view('template/side_nav',$data);
+		$this->load->view('content/'.$content,$data);
+		$this->load->view('template/footer');
 	}
 	
 }
