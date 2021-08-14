@@ -11,7 +11,7 @@
 												NOTIFICATION
 											</div>
 											<div class="modal-body">
-												<b>User successfully Added</b>
+												<b>Contract successfully added and pending review by legal officer</b>
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-danger btn-ok" style="background:#2a5290; border:0" data-dismiss="modal">Close</button>
@@ -41,7 +41,7 @@
 										</div>
 									</div>
 									<!--begin::Form-->
-									<form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
+									<form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed" id="form_contract" enctype="multipart/form-data" accept-charset="utf-8" method="post">
 									
 									
 									
@@ -73,7 +73,7 @@
 														<span class="input-group-addon">
 															<i class="la la-user"></i>
 														</span>
-														<input type="text" name="requester_name" class="form-control m-input" placeholder="" required>
+														<input type="text" name="requester_name" class="form-control m-input" placeholder="" value="<?php echo $this->session->userdata('name'); ?>" readonly required>
 													</div>
 													<span class="m-form__help">
 														Please enter your fullname
@@ -285,7 +285,7 @@
 													<label class="">
 														Terms and Conditions agreed upon:
 													</label>
-													<input type="file" class="form-control m-input" placeholder="Enter contact number" name="proposal_agreed_upon" required>
+													<input type="file" class="form-control m-input" placeholder="Enter contact number" name="doc_"  required>
 													<span class="m-form__help">
 														Attach proposal agreed upon or Sales/Service Order
 													</span>
@@ -397,13 +397,18 @@
 	
 	$(function() {
 		
-	$('#form_user').submit(function(e) {
+	function redirect_view() {
+		$('#modal-user').modal('hide');
+		window.location.replace('<?php echo site_url('App/contracts/pr') ?>');
+	}
+		
+	$('#form_contract').submit(function(e) {
 		e.preventDefault();
 		 $('#loader_doc').css("display","block");
 		
             var data = new FormData(this); // <-- 'this' is your form element
             $.ajax({
-                url: "<?php echo site_url(); ?>/admin/insert_user",
+                url: "<?php echo site_url(); ?>/App/insertContract",
                 data: data,
                 cache: false,
                 contentType: false,
@@ -415,8 +420,8 @@
                          $('#loader_doc').css("display","none");
 						 //Display modal for successful user creation
 						 $('#modal-user').modal('show');
-						 setTimeout(function(){$('#modal-user').modal('hide')},3000);
-						 $("#form_user").trigger('reset');
+						 setTimeout(function(){redirect_view()},3000);
+						 $("#form_contract").trigger('reset');
                      } 
                     else
                     {
@@ -476,4 +481,4 @@
 			
 						
 						
-					</div>
+	</div>

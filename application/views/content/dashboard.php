@@ -12,6 +12,7 @@
 								<div class="row m-row--no-padding m-row--col-separator-xl">
 									<div class="col-md-12 col-lg-6 col-xl-3">
 										<!--begin::Total Profit-->
+										<a href="<?php echo site_url('App/contracts/pr'); ?>">
 										<div class="m-widget24">
 											<div class="m-widget24__item">
 												<h4 class="m-widget24__title">
@@ -22,24 +23,26 @@
 													Contracts to be reviewed
 												</span>
 												<span class="m-widget24__stats m--font-brand">
-													800
+													<?php echo $pendingReviewCount ; ?>
 												</span>
 												<div class="m--space-10"></div>
 												<div class="progress m-progress--sm">
-													<div class="progress-bar m--bg-brand" role="progressbar" style="width: 78%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+													<div class="progress-bar m--bg-brand" role="progressbar" style="width: <?php echo $pendingReviewCount ; ?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 												</div>
 												<span class="m-widget24__change">
 													Change
 												</span>
 												<span class="m-widget24__number">
-													78%
+													<!--78%-->
 												</span>
 											</div>
 										</div>
+										</a>
 										<!--end::Total Profit-->
 									</div>
 									<div class="col-md-12 col-lg-6 col-xl-3">
 										<!--begin::New Feedbacks-->
+										<a href="<?php echo site_url('App/contracts/pv'); ?>">
 										<div class="m-widget24">
 											<div class="m-widget24__item">
 												<h4 class="m-widget24__title">
@@ -50,24 +53,26 @@
 													Contracts to be validated
 												</span>
 												<span class="m-widget24__stats m--font-info">
-													1349
+													<?php echo $pendingValidationCount ; ?>
 												</span>
 												<div class="m--space-10"></div>
 												<div class="progress m-progress--sm">
-													<div class="progress-bar m--bg-info" role="progressbar" style="width: 84%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+													<div class="progress-bar m--bg-info" role="progressbar" style="width: <?php echo $pendingValidationCount ; ?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 												</div>
 												<span class="m-widget24__change">
 													Change
 												</span>
 												<span class="m-widget24__number">
-													84%
+													<!--84%-->
 												</span>
 											</div>
 										</div>
+										</a>
 										<!--end::New Feedbacks-->
 									</div>
 									<div class="col-md-12 col-lg-6 col-xl-3">
 										<!--begin::New Orders-->
+										<a href="<?php echo site_url('App/contracts/ps'); ?>">
 										<div class="m-widget24">
 											<div class="m-widget24__item">
 												<h4 class="m-widget24__title">
@@ -78,20 +83,21 @@
 													Contracts to be signed-off
 												</span>
 												<span class="m-widget24__stats m--font-danger">
-													567
+													<?php echo $pendingSignoffCount ; ?>
 												</span>
 												<div class="m--space-10"></div>
 												<div class="progress m-progress--sm">
-													<div class="progress-bar m--bg-danger" role="progressbar" style="width: 69%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+													<div class="progress-bar m--bg-danger" role="progressbar" style="width: <?php echo $pendingSignoffCount ; ?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 												</div>
 												<span class="m-widget24__change">
 													Change
 												</span>
 												<span class="m-widget24__number">
-													69%
+													<!--69%-->
 												</span>
 											</div>
 										</div>
+										</a>
 										<!--end::New Orders-->
 									</div>
 									<div class="col-md-12 col-lg-6 col-xl-3">
@@ -106,17 +112,17 @@
 													Due for renewals
 												</span>
 												<span class="m-widget24__stats m--font-success">
-													276
+													<?php echo $expiredCount ?> %
 												</span>
 												<div class="m--space-10"></div>
 												<div class="progress m-progress--sm">
-													<div class="progress-bar m--bg-success" role="progressbar" style="width: 90%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+													<div class="progress-bar m--bg-success" role="progressbar" style="width: 0%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 												</div>
 												<span class="m-widget24__change">
 													Change
 												</span>
 												<span class="m-widget24__number">
-													90%
+													<!--90%-->
 												</span>
 											</div>
 										</div>
@@ -172,7 +178,7 @@
 									<div class="m-portlet__body">
 										<div class="m-widget25">
 											<span class="m-widget25__price m--font-brand">
-												2,650
+												<?php echo $totalCount ; ?>
 											</span>
 											<span class="m-widget25__desc">
 												Total Contracts
@@ -180,11 +186,15 @@
 											<div class="m-widget25--progress">
 												<div class="m-widget25__progress">
 													<span class="m-widget25__progress-number">
-														63%
+														<?php 
+															$ongoingCount = ($signedoffCount/$totalCount)*100 ;
+															echo $ongoingCount ; 
+														
+														?> %
 													</span>
 													<div class="m--space-10"></div>
 													<div class="progress m-progress--sm">
-														<div class="progress-bar m--bg-danger" role="progressbar" style="width: 63%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+														<div class="progress-bar m--bg-danger" role="progressbar" style="width: <?php echo $ongoingCount ?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 													</div>
 													<span class="m-widget25__progress-sub">
 														On-going
@@ -192,11 +202,18 @@
 												</div>
 												<div class="m-widget25__progress">
 													<span class="m-widget25__progress-number">
-														39%
+														<?php 
+														
+														$totalPendingCount = $pendingReviewCount + $pendingValidationCount + $pendingSignoffCount + $failValidationCount + $failReviewCount + $failSignoffCount; 
+														$processingCount = ($totalPendingCount/$totalCount) * 100 ;
+														echo $processingCount ;
+														
+														
+														?> %
 													</span>
 													<div class="m--space-10"></div>
 													<div class="progress m-progress--sm">
-														<div class="progress-bar m--bg-accent" role="progressbar" style="width: 39%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+														<div class="progress-bar m--bg-accent" role="progressbar" style="width: <?php echo $processingCount ?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 													</div>
 													<span class="m-widget25__progress-sub">
 														In Processing
@@ -204,11 +221,15 @@
 												</div>
 												<div class="m-widget25__progress" >
 													<span class="m-widget25__progress-number">
-														54%
+														<?php 
+														$expiredCount_ = ($expiredCount/$totalCount)*100 ; 
+														echo $expiredCount_ ;
+														
+														?> %
 													</span>
 													<div class="m--space-10"></div>
 													<div class="progress m-progress--sm">
-														<div class="progress-bar m--bg-warning" role="progressbar" style="width: 54%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+														<div class="progress-bar m--bg-warning" role="progressbar" style="width: <?php echo $expiredCount_ ?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 													</div>
 													<span class="m-widget25__progress-sub">
 														Expired
@@ -231,13 +252,14 @@
 								<!--begin:: Widgets/Quick Stats-->
 								<div class="row m-row--full-height">
 									<div class="col-sm-12 col-md-12 col-lg-6">
+										<a href="<?php echo site_url('App/contracts/so'); ?>">
 										<div class="m-portlet m-portlet--half-height m-portlet--border-bottom-brand ">
 											<div class="m-portlet__body">
 												<div class="m-widget26">
 													<div class="m-widget26__number">
-														570
+														<?php echo $signedoffCount ; ?>
 														<small>
-															Reviewed
+															Signed-off
 														</small>
 													</div>
 													<div class="m-widget26__chart" style="height:90px; width: 220px;">
@@ -246,14 +268,16 @@
 												</div>
 											</div>
 										</div>
+										</a>
 										<div class="m--space-30"></div>
+										<a href="<?php echo site_url('App/contracts/fv'); ?>">
 										<div class="m-portlet m-portlet--half-height m-portlet--border-bottom-danger ">
 											<div class="m-portlet__body">
 												<div class="m-widget26">
 													<div class="m-widget26__number">
-														690
+														<?php echo $failValidationCount ; ?>
 														<small>
-															Validated
+															Fail Validation
 														</small>
 													</div>
 													<div class="m-widget26__chart" style="height:90px; width: 220px;">
@@ -262,15 +286,17 @@
 												</div>
 											</div>
 										</div>
+										</a>
 									</div>
 									<div class="col-sm-12 col-md-12 col-lg-6">
+										<a href="<?php echo site_url('App/contracts/fr'); ?>">
 										<div class="m-portlet m-portlet--half-height m-portlet--border-bottom-success ">
 											<div class="m-portlet__body">
 												<div class="m-widget26">
 													<div class="m-widget26__number">
-														230
+														<?php echo $failReviewCount ; ?>
 														<small>
-															Signed-off
+															Fail Review
 														</small>
 													</div>
 													<div class="m-widget26__chart" style="height:90px; width: 220px;">
@@ -279,14 +305,16 @@
 												</div>
 											</div>
 										</div>
+										</a>
 										<div class="m--space-30"></div>
+										<a href="<?php echo site_url('App/contracts/fs'); ?>">
 										<div class="m-portlet m-portlet--half-height m-portlet--border-bottom-accent ">
 											<div class="m-portlet__body">
 												<div class="m-widget26">
 													<div class="m-widget26__number">
-														470
+														<?php echo $failSignoffCount ; ?>
 														<small>
-															Terminated
+															Fail Signoff
 														</small>
 													</div>
 													<div class="m-widget26__chart" style="height:90px; width: 220px;">
@@ -295,6 +323,7 @@
 												</div>
 											</div>
 										</div>
+										</a>
 									</div>
 								</div>
 								<!--end:: Widgets/Quick Stats-->

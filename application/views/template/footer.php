@@ -86,7 +86,7 @@
 		<script src="<?php echo base_url('assets/demo/default/base/scripts.bundle.js') ?>" type="text/javascript"></script>
 		<!--end::Base Scripts -->
 		
-		<?php if($page_title == "New Contract"){ ?>
+		<?php if($page_title == "New Contract" || $title="Contract Details"){ ?>
 			<script src="<?php echo base_url('assets/demo/default/custom/components/forms/widgets/bootstrap-datepicker.js') ?>" type="text/javascript"></script>
 		
 		<?php }	?>

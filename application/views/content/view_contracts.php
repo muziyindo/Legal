@@ -76,33 +76,34 @@
 												</tr>
 											</thead>
 											<tbody>
+												<?php $i=1; foreach($contracts as $contract) { ?>
 												<tr>
 													<th scope="row">
-														1
+														<?php echo $i; ?>
 													</th>
 													<td>
-														Saipem Nigeria Limited
+														<?php echo $contract->requester_name; ?>
 													</td>
 													<td>
-														Cynthia Edeh
+														<?php echo $contract->other_party_name; ?>
 													</td>
 													<td>
-														24 Months
+														<?php echo $contract->contract_duration; ?>
 													</td>
 													<td>
-														29/06/2021
+														<?php echo $contract->proposed_start_date; ?>
 													</td>
 													<td>
-														28/06/2022
+														<?php echo $contract->proposed_end_date; ?>
 													</td>
 													<td>
-														This contract might be terminated two months to contract end date
+														<?php echo $contract->termination_notice; ?>
 													</td>
 													<td>
-														Pending Review
+														<?php echo $contract->status; ?>
 													</td>
 													<td>
-														<a href="<?php echo site_url('App/contractDetails')  ?>" class="btn btn-accent m-btn m-btn--icon m-btn--pill m-btn--air">
+														<a href="<?php echo site_url('App/contractDetails/'.$contract->id)  ?>" class="btn btn-accent m-btn m-btn--icon m-btn--pill m-btn--air">
 															<span>
 																<i class="la la-eye"></i>
 																<span>
@@ -112,42 +113,8 @@
 														</a>
 													</td>
 												</tr>
-												<tr>
-													<th scope="row">
-														1
-													</th>
-													<td>
-														Saipem Nigeria Limited
-													</td>
-													<td>
-														Cynthia Edeh
-													</td>
-													<td>
-														24 Months
-													</td>
-													<td>
-														29/06/2021
-													</td>
-													<td>
-														28/06/2022
-													</td>
-													<td>
-														This contract might be terminated two months to contract end date
-													</td>
-													<td>
-														Pending Review
-													</td>
-													<td>
-														<a href="<?php echo site_url('App/contractDetails')  ?>" class="btn btn-accent m-btn m-btn--icon m-btn--pill m-btn--air">
-															<span>
-																<i class="la la-eye"></i>
-																<span>
-																	More
-																</span>
-															</span>
-														</a>
-													</td>
-												</tr>
+												<?php $i++; } ?>
+												
 												
 											</tbody>
 										</table>

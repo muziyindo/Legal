@@ -198,9 +198,8 @@
 						
 						
 						
-						<script type="text/javascript" src="<?php echo base_url('assets/') ?>js/plugins/jquery/jquery.min.js"></script>
-				
-				
+<script type="text/javascript" src="<?php echo base_url('assets/') ?>js/plugins/jquery/jquery.min.js"></script>
+						
 <script>
 	
 	$(function() {
