@@ -263,6 +263,10 @@ class App_model extends CI_Model
 			$signoff_comment = $this->input->post('signoff_comment');
 			//echo $review." ".$validate." Hello";
 			
+			$review_comment = str_replace("'","\'",$this->input->post('review_comment'));
+			$validate_comment = str_replace("'","\'",$this->input->post('validate_comment'));
+			$signoff_comment = str_replace("'","\'",$this->input->post('signoff_comment'));
+			
 			if(empty($review))
 			{
 				return 10 ; //no update 
