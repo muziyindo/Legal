@@ -73,7 +73,7 @@
 													</label>
 													<select class="form-control m-input" name="role" required>
 														<option value="">-select-</option>
-														<option value="Contract Requester">Contract Requester</option>
+														<option value="Contract Requestor">Contract Requestor</option>
 														<option value="Legal Officer">Legal Officer</option>
 														<option value="Admin">Admin</option>
 														

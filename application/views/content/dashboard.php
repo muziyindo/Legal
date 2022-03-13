@@ -46,11 +46,11 @@
 										<div class="m-widget24">
 											<div class="m-widget24__item">
 												<h4 class="m-widget24__title">
-													Pending Validation
+													Pending Creation
 												</h4>
 												<br>
 												<span class="m-widget24__desc">
-													Contracts to be validated
+													Contracts to be created
 												</span>
 												<span class="m-widget24__stats m--font-info">
 													<?php echo $pendingValidationCount ; ?>
@@ -188,7 +188,7 @@
 													<span class="m-widget25__progress-number">
 														<?php 
 															$ongoingCount = ($signedoffCount/$totalCount)*100 ;
-															echo $ongoingCount ; 
+															echo round($ongoingCount) ; 
 														
 														?> %
 													</span>
@@ -206,7 +206,7 @@
 														
 														$totalPendingCount = $pendingReviewCount + $pendingValidationCount + $pendingSignoffCount + $failValidationCount + $failReviewCount + $failSignoffCount; 
 														$processingCount = ($totalPendingCount/$totalCount) * 100 ;
-														echo $processingCount ;
+														echo round($processingCount) ;
 														
 														
 														?> %
@@ -277,7 +277,7 @@
 													<div class="m-widget26__number">
 														<?php echo $failValidationCount ; ?>
 														<small>
-															Fail Validation
+															Fail Creation
 														</small>
 													</div>
 													<div class="m-widget26__chart" style="height:90px; width: 220px;">

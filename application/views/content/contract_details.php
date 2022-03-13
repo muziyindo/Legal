@@ -51,6 +51,37 @@
 											<div class="form-group m-form__group row">
 												<div class="col-lg-4">
 													<label>
+														Document Type:
+													</label>
+													<select name="document_type" class="form-control m-input" id="document_type" >
+														<option value="">-select-</option>
+														<option value="Contract" <?php  if($contract_details[document_type]=="Contract")echo "selected" ?>>Contract</option>
+														<option value="Letter" <?php  if($contract_details[document_type]=="Letter")echo "selected" ?>>Letter</option>
+														<option value="Memorandum of understanding" <?php  if($contract_details[document_type]=="Memorandum of understanding")echo "selected" ?>>Memorandum of understanding</option>
+														<option value="Short Term Lease" <?php  if($contract_details[document_type]=="Short Term Lease")echo "selected" ?>>Short Term Lease</option>
+														
+													</select>
+													<span class="m-form__help">
+														Please select your title
+													</span>
+												</div>
+												<div class="col-lg-4">
+													<label>
+														Activity:
+													</label>
+													<select name="activity" class="form-control m-input" id="activity">
+														<option value="">-select-</option>
+														<option value="Creation" <?php  if($contract_details[activity]=="Creation")echo "selected" ?>>Creation</option>
+														<option value="Review" <?php  if($contract_details[activity]=="Review")echo "selected" ?>>Review</option>
+														
+														
+													</select>
+													<span class="m-form__help">
+														Please select your title
+													</span>
+												</div>
+												<div class="col-lg-4">
+													<label>
 														Title:
 													</label>
 													<select name="requester_title" class="form-control m-input">
@@ -64,6 +95,11 @@
 														Please select your title
 													</span>
 												</div>
+												
+												
+											</div>
+											
+											<div class="form-group m-form__group row">
 												<div class="col-lg-4">
 													<label>
 														Full Name:
@@ -79,15 +115,35 @@
 													</span>
 												</div>
 												<div class="col-lg-4">
-													<label class="">
+													<label>
 														Department:
 													</label>
-													<input type="text" class="form-control m-input" placeholder="Enter department" name="requester_dept" value="<?php  echo $contract_details[requester_dept] ?>">
+													<select name="requester_dept" class="form-control m-input" required>
+														<option value="">-select-</option>
+														<option value="Finance" <?php  if($contract_details[requester_dept]=="Finance")echo "selected" ?>>Finance</option>
+														<option value="HR" <?php  if($contract_details[requester_dept]=="HR")echo "selected" ?>>HR</option>
+														<option value="BDD" <?php  if($contract_details[requester_dept]=="BDD")echo "selected" ?>>BDD</option>
+														<option value="Executives" <?php  if($contract_details[requester_dept]=="Executives")echo "selected" ?>>Executives</option>
+														
+														
+														<option value="Systems" <?php  if($contract_details[requester_dept]=="Systems")echo "selected" ?>>Systems</option>
+														<option value="Pre-Sales" <?php  if($contract_details[requester_dept]=="Pre-Sales")echo "selected" ?>>Pre-Sales</option>
+														<option value="DCM" <?php  if($contract_details[requester_dept]=="DCM")echo "selected" ?>>DCM</option>
+														<option value="Access Network" <?php  if($contract_details[requester_dept]=="Access Network")echo "selected" ?>>Access Network</option>
+														<option value="Field Service" <?php  if($contract_details[requester_dept]=="Field Service")echo "selected" ?>>Field Service</option>
+														<option value="Admin" <?php  if($contract_details[requester_dept]=="Admin")echo "selected" ?>>Admin</option>
+														
+														
+														
+														
+														
+														
+														
+													</select>
 													<span class="m-form__help">
-														Please enter your department
+														Please select your department
 													</span>
 												</div>
-												
 											</div>
 											
 											
@@ -102,7 +158,7 @@
 													<i class="la la-gear"></i>
 												</span>
 												<h3 class="m-portlet__head-text">
-													Other Party Personal Information
+													Other Party Information
 												</h3>
 											</div>
 										</div>
@@ -150,48 +206,16 @@
 												</div>
 											</div>
 											<div class="form-group m-form__group row">
+												
 												<div class="col-lg-4">
 													<label class="">
 														Authorized Signatory:
 													</label>
-													<div class="m-radio-inline">
-														<label class="m-radio m-radio--solid">
-															<input type="radio" name="authorized_signatory" value="1" <?php  if($contract_details[authorized_signatory]==1)echo "checked" ?>>
-															Signed
-															<span></span>
-														</label>
-														<label class="m-radio m-radio--solid">
-															<input type="radio" name="authorized_signatory" value="2" <?php  if($contract_details[authorized_signatory]==2)echo "checked" ?>>
-															Not Signed
-															<span></span>
-														</label>
-													</div>
+													<input type="text" class="form-control m-input" placeholder="" name="authorized_signatory" value="<?php  echo $contract_details[authorized_signatory] ?>">
 													<span class="m-form__help">
-														<!--Please select user group-->
+														
 													</span>
 												</div>
-											</div>
-											
-										</div>
-										
-										
-										
-										
-										<div class="m-portlet__head bg-light">
-										<div class="m-portlet__head-caption">
-											<div class="m-portlet__head-title">
-												<span class="m-portlet__head-icon m--hide">
-													<i class="la la-gear"></i>
-												</span>
-												<h3 class="m-portlet__head-text">
-													Other Party Contact Information
-												</h3>
-											</div>
-										</div>
-										</div>
-										
-										<div class="m-portlet__body">
-											<div class="form-group m-form__group row">
 												<div class="col-lg-4">
 													<label>
 														Phone Number:
@@ -210,15 +234,18 @@
 														Please enter email
 													</span>
 												</div>
+											</div>
+											
+											<div class="form-group m-form__group row">
 												<div class="col-lg-4">
 													<label>
-														Address:
+														Physical Address (No PO Box)
 													</label>
 													<div class="input-group m-input-group m-input-group--square">
 														<span class="input-group-addon">
 															<i class="la la-user"></i>
 														</span>
-														<input type="text" class="form-control m-input" placeholder="" name="address" value="<?php  echo $contract_details[address] ?>">
+														<input type="text" class="form-control m-input" placeholder="" name="address" value="<?php  echo $contract_details[address] ?>" >
 													</div>
 													<span class="m-form__help">
 														Please enter address
@@ -229,8 +256,11 @@
 										</div>
 										
 										
+					
 										
 										
+										
+										<div id="wrapper-box"><!-- start wrapper-box -->
 										<div class="m-portlet__head bg-light">
 										<div class="m-portlet__head-caption">
 											<div class="m-portlet__head-title">
@@ -238,7 +268,7 @@
 													<i class="la la-gear"></i>
 												</span>
 												<h3 class="m-portlet__head-text">
-													Other Party Contract Information
+													Contract Terms
 												</h3>
 											</div>
 										</div>
@@ -246,15 +276,7 @@
 										
 										<div class="m-portlet__body">
 											<div class="form-group m-form__group row">
-												<div class="col-lg-4">
-													<label>
-														Contract Duration (in months):
-													</label>
-													<input type="text" class="form-control m-input" placeholder="Enter contract duration" name="contract_duration" value="<?php  echo $contract_details[contract_duration] ?>">
-													<span class="m-form__help">
-														Please enter contract duration
-													</span>
-												</div>
+												
 												<div class="col-lg-4">
 													<label class="">
 														Proposed Start Date:
@@ -276,6 +298,15 @@
 													</div>
 													<span class="m-form__help">
 														Please enter proposed end date
+													</span>
+												</div>
+												<div class="col-lg-4">
+													<label>
+														Contract Duration:
+													</label>
+													<input type="text" class="form-control m-input" placeholder="Enter contract duration" name="contract_duration" id="contract_duration" readonly value="<?php  echo $contract_details[contract_duration] ?>">
+													<span class="m-form__help">
+														Please enter contract duration
 													</span>
 												</div>
 											</div>
@@ -315,20 +346,14 @@
 																	<span style="background:rgb(255,117,117); color:black;"><strong>proposal agreed upon or Sales/Service Order</strong></span>
 																</td>
 																<td>
-																	<a href="<?php echo site_url('App/downloadDoc/'.$contract_details[proposal_agreed_upon]) ?>">Download</a>
+																	<a href="<?php echo site_url('App/downloadDoc/'.$contract_details[proposal_agreed_upon]) ?>"><i class="la la-download"></i></a>
 																</td>
 															</tr>
 														</tbody>
 													</table>
 													
 												</div>
-												
-												
-												
-										
-												
 											</div>
-											
 										</div>
 										
 										
@@ -340,7 +365,7 @@
 													<i class="la la-gear"></i>
 												</span>
 												<h3 class="m-portlet__head-text">
-													Other Informations
+													Other Information
 												</h3>
 											</div>
 										</div>
@@ -366,24 +391,216 @@
 														Please enter payment term
 													</span>
 												</div>
+												
 												<div class="col-lg-4">
 													<label>
-														Lease or sale of equipment:
+														Lease/Sale of equipment:
 													</label>
-													<div class="input-group m-input-group m-input-group--square">
-														<span class="input-group-addon">
-															<i class="la la-user"></i>
-														</span>
-														<input type="text" class="form-control m-input" placeholder="enter Lease or sale of equipment" name="sale_of_equipment" value="<?php  echo $contract_details[sale_of_equipment] ?>">
-													</div>
+													<select name="sale_of_equipment" class="form-control m-input">
+														<option value="">-select-</option>
+														<option value="Lease" <?php  if($contract_details[sale_of_equipment]=="Lease")echo "selected" ?>>Lease</option>
+														<option value="Sale of equipment" <?php  if($contract_details[sale_of_equipment]=="Sale of equipment")echo "selected" ?>>Sale of equipment</option>			
+													</select>
 													<span class="m-form__help">
 														Please enter Lease or sale of equipment
 													</span>
 												</div>
+												
+												
 											</div>
 										</div>
+										</div> <!--End wrapper-box-->
 										
+										
+										
+										
+										
+										
+										<div id="wrapper-box-2" style="display:none"><!--start wrapper-box-2-->
+										<div class="m-portlet__head bg-light">
+										<div class="m-portlet__head-caption">
+											<div class="m-portlet__head-title">
+												<span class="m-portlet__head-icon m--hide">
+													<i class="la la-gear"></i>
+												</span>
+												<h3 class="m-portlet__head-text">
+													Purpose of Letter
+												</h3>
+											</div>
 										</div>
+										</div>
+										<div class="m-portlet__body">
+											<div class="form-group m-form__group row">
+												
+												<div class="col-lg-8">
+													<label class="">
+														Please enter the details of the request:
+													</label>
+													<textarea cols="20" rows="10" class="form-control m-input" placeholder="Enter details of request" name="purpose_of_letter" ><?php echo $contract_details[purpose_of_letter] ?></textarea>
+													<!--<span class="m-form__help">
+													</span>-->
+												</div>
+											</div>
+											
+										</div>
+										</div> <!--end wrapper-box-2-->
+										
+						
+										</div>
+										
+										
+										
+										
+																<!--begin::Portlet-->
+						<div class="m-portlet">
+							<div class="m-portlet__head">
+								<div class="m-portlet__head-caption">
+									<div class="m-portlet__head-title">
+										<h3 class="m-portlet__head-text">
+											Uploaded Documents
+										</h3>
+									</div>
+								</div>
+							</div>
+							<div class="m-portlet__body">
+								
+								
+								<?php
+									$message=$this->session->flashdata('message');
+									if($message=="deleted")
+									{
+									?>
+										<div class="alert alert-success"  role="alert">
+										<button data-dismiss="alert" class="close close-sm" type="button"></button>
+										<strong>
+											Deleted!
+										</strong>
+										successfully.
+										</div>
+									<?php
+									}
+								?>
+								
+								
+								<!--begin::Section-->
+								<div class="m-section">
+									<div class="m-section__content">
+										<table class="table table-bordered table-striped" id="example" width="100%">
+											<thead>
+												<tr>
+													<th>
+														#
+													</th>
+													<th>
+														Document Name
+													</th>
+													<th>
+														File Name
+													</th>
+													<th>
+														Date Added
+													</th>
+													<th>
+														Uploaded By
+													</th>
+													
+													<th>
+														Download
+													</th>
+													<!--<th>
+														Delete
+													</th>-->
+												</tr>
+											</thead>
+											<tbody>
+												<?php $i=1; foreach($docs as $contract) { ?>
+												
+												<?php
+													$path = $contract->path;
+													$filePAthArray = explode("/",$path) ;
+													$filename = $filePAthArray[2];
+													
+													$id = urlencode(base64_encode($contract->id)); //encoding ID
+													//$numbers = $hashids->decode($id);
+												?>
+												
+												
+												
+												<tr>
+													<th scope="row">
+														<?php echo $i; ?>
+													</th>
+													<td>
+														<?php echo $contract->doc_name; ?>
+													</td>
+													<td>
+														<?php echo substr($filename,10); ?>
+													</td>
+													<td>
+														<?php echo $contract->date_added; ?>
+													</td>
+													<td>
+														<?php echo $contract->modified_by; ?>
+													</td>
+													<td>
+														<a href="<?php echo site_url('App/download_documents_/'.$contract->id)  ?>" class="btn btn-accent m-btn m-btn--icon m-btn--pill m-btn--air">
+															<span>
+																<i class="la la-download"></i>
+																<span>
+																	
+																</span>
+															</span>
+														</a>
+													</td>
+													<!--<td>
+														<a href="<?php echo site_url('App/removeDoc/'.$id)  ?>" class="btn btn-danger m-btn m-btn--icon m-btn--pill m-btn--air">
+															<span>
+																<i class="la la-trash-o"></i>
+																<span>
+																	
+																</span>
+															</span>
+														</a>
+													</td>-->
+													
+												</tr>
+												<?php $i++; } ?>
+												
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<!--end::Section-->
+							</div>
+						</div>
+						<!--end::Portlet-->
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
 										
 										<div class="m-portlet__head bg-light">
 										<div class="m-portlet__head-caption">
@@ -399,9 +616,8 @@
 										</div>
 										
 								<div class="m-portlet__body">
-								
 									<div class="form-group m-form__group row">
-										<table class="table table-striped">
+										<table class="table table-striped_ table-bordered">
 											<thead>
 												<tr>
 													<th>
@@ -412,12 +628,15 @@
 													<th>
 														Comment
 													</th>
+													<th>
+													Download
+													</th>
 													
 												</tr>
 											</thead>
 											<tbody>
+												<?php if($contract_details[activity]=="Review" ){ ?>
 												<tr>
-													
 													<th scope="row" style="background:#e9ecef;">
 														Review
 													</th>
@@ -425,43 +644,56 @@
 														<?php if($contract_details[status]=="Pending_Review" ){ ?>
 														pending<div class="m-loader m-loader--brand" style="width: 30px; display: inline-block;"></div>
 														<?php } else if($contract_details[status]=="Fail_Review" ){ ?>
-														Fail <i class="la la-close" style="color:red; font-weight:bold"></i>
+														Disapproved <i class="la la-close" style="color:red; font-weight:bold"></i>
 														<?php } else { ?>
-														Pass <i class="la la-check" style="color:green; font-weight:bold"></i>
+														Approved <i class="la la-check" style="color:green; font-weight:bold"></i>
 														<?php } ?>
 													</td>
 													<td>
 														<?php echo $contract_details[review_comment] ; ?>
 													</td>
-													
+													<td> 
+																<?php if(!empty($contract_details[review_doc])){ ?>
+																	<a href="<?php echo site_url('App/downloadDoc/'.$contract_details[review_doc]) ?>"><i class="la la-download"></i></a>
+																<?php } ?>
+													</td>
 												</tr>
+												
+												<?php } else if($contract_details[activity]=="Creation" ){ ?>
+												
 												<tr>
-													<th scope="row">
-														Validate
+													<th scope="row" style="background:#e9ecef;">
+														Creation
 													</th>
 													<td>
-														<?php if($contract_details[status]=="Fail_Validation"  ){ ?>
-														Fail <i class="la la-close" style="color:red; font-weight:bold"></i>
-														<?php } else if($contract_details[status]=="Signed_Off" || $contract_details[status]=="Fail_Signoff" || $contract_details[status]=="Pending_Signoff"){ ?>
-														Pass <i class="la la-check" style="color:green; font-weight:bold"></i>
-														<?php } else { ?>
+														<?php if($contract_details[status]=="Pending_Creation" ){ ?>
 														pending<div class="m-loader m-loader--brand" style="width: 30px; display: inline-block;"></div>
+														<?php } else if($contract_details[status]=="Fail_Creation" ){ ?>
+														Disapproved <i class="la la-close" style="color:red; font-weight:bold"></i>
+														<?php } else { ?>
+														Approved <i class="la la-check" style="color:green; font-weight:bold"></i>
 														<?php } ?>
 													</td>
 													<td>
-														<?php echo $contract_details[validation_comment] ; ?>
+														<?php echo $contract_details[review_comment] ; ?>
 													</td>
-													
+													<td> 
+																<?php if(!empty($contract_details[review_doc])){ ?>
+																	<a href="<?php echo site_url('App/downloadDoc/'.$contract_details[review_doc]) ?>"><i class="la la-download"></i></a>
+																<?php } ?>
+													</td>
 												</tr>
+												<?php } ?>
+												
 												<tr>
 													<th scope="row" style="background:#e9ecef;">
 														Sign off
 													</th>
 													<td>
 														<?php if($contract_details[status]=="Signed_Off" ){ ?>
-														Pass <i class="la la-check" style="color:green; font-weight:bold"></i>
+														Approved <i class="la la-check" style="color:green; font-weight:bold"></i>
 														<?php } else if($contract_details[status]=="Fail_Signoff" ){ ?>
-														Fail <i class="la la-close" style="color:red; font-weight:bold"></i>
+														Disapproved <i class="la la-close" style="color:red; font-weight:bold"></i>
 														<?php } else { ?>
 														pending<div class="m-loader m-loader--brand" style="width: 30px; display: inline-block;"></div>
 														<?php } ?>
@@ -469,13 +701,17 @@
 													<td>
 														<?php echo $contract_details[signoff_comment] ; ?>
 													</td>
-													
+													<td>
+																<?php if(!empty($contract_details[signoff_doc])){ ?>
+																	<a href="<?php echo site_url('App/downloadDoc/'.$contract_details[signoff_doc]) ?>">
+																<i class="la la-download"></i></a>
+																<?php } ?>
+													</td>
 												</tr>
 												
 											</tbody>
 										</table>
 									</div>
-								
 								</div>
 								
 								
@@ -497,7 +733,7 @@
 									<div class="m-portlet__body">
 								
 									<div class="form-group m-form__group row">
-										<table class="table m-table">
+										<table class="table m-table " >
 											<thead>
 												<tr>
 													<th>
@@ -515,22 +751,24 @@
 												</tr>
 											</thead>
 											<tbody>
+											
+											
+												<?php if($contract_details[activity]=="Review" ){ ?>
 												<tr>
-													
 													<th scope="row" style="background:#e9ecef;">
 														Review
 													</th>
 													<td>
 																<label class="m-radio">
 																		<input type="radio" name="review" value="1" <?php  if($contract_details[status]!="Pending_Review" && $contract_details[status]!="Fail_Review")echo "checked" ?>>
-																		Pass Review
+																		Approve
 																		<span></span>
 																</label>
 													</td>
 													<td>
 																<label class="m-radio">
 																		<input type="radio" name="review" value="2" <?php  if($contract_details[status]=="Fail_Review")echo "checked" ?>>
-																		Fail Review
+																		Disapprove
 																		<span></span>
 																</label>
 													</td>
@@ -541,39 +779,65 @@
 															</label>
 															<textarea class="form-control m-input" id="exampleTextarea" rows="3" name="review_comment"></textarea>
 														</div>
+														
+														
+													</td>
+													<td>
+														<div class="form-group">
+															<label class="">
+																Upload file:
+															</label>
+															<input type="file" class="form-control m-input" placeholder="Enter contact number" name="review_doc" >
+														</div>
 													</td>
 													
 												</tr>
-												<?php if($contract_details[status]!="Pending_Review" && $contract_details[status]!="Fail_Review"){ ?>
+												
+												<?php } else if($contract_details[activity]=="Creation" ){ ?>
+												
 												<tr>
 													<th scope="row" style="background:#e9ecef;">
-														Validate
+														Creation
 													</th>
 													<td>
-														<label class="m-radio">
-																		<input type="radio" name="validate" value="1" <?php  if($contract_details[status]=="Pending_Signoff" || $contract_details[status]=="Fail_Signoff" || $contract_details[status]=="Signed_Off")echo "checked" ?>>
-																		Pass Validation
+																<label class="m-radio">
+																		<input type="radio" name="review" value="1" <?php  if($contract_details[status]!="Pending_Creation" && $contract_details[status]!="Fail_Creation")echo "checked" ?>>
+																		Approve
 																		<span></span>
-														</label>
+																</label>
 													</td>
 													<td>
-														<label class="m-radio">
-																		<input type="radio" name="validate" value="2" <?php  if($contract_details[status]=="Fail_Validation")echo "checked" ?>>
-																		Fail Validation
+																<label class="m-radio">
+																		<input type="radio" name="review" value="2" <?php  if($contract_details[status]=="Fail_Creation")echo "checked" ?>>
+																		Disapprove
 																		<span></span>
-														</label>
+																</label>
 													</td>
 													<td>
 														<div class="form-group">
 															<label for="exampleTextarea">
 																Comment
 															</label>
-															<textarea class="form-control m-input" id="exampleTextarea" rows="3" name="validate_comment"></textarea>
+															<textarea class="form-control m-input" id="exampleTextarea" rows="3" name="review_comment"></textarea>
+														</div>
+														
+														
+													</td>
+													<td>
+														<div class="form-group">
+															<label class="">
+																Upload file:
+															</label>
+															<input type="file" class="form-control m-input" placeholder="Enter contact number" name="review_doc" >
 														</div>
 													</td>
 													
 												</tr>
+												
 												<?php } ?>
+												
+												
+												
 												
 												<?php if($contract_details[status]=="Pending_Signoff" || $contract_details[status]=="Fail_Signoff" || $contract_details[status]=="Signed_Off"){ ?>
 												<tr>
@@ -583,14 +847,14 @@
 													<td>
 														<label class="m-radio">
 																		<input type="radio" name="signoff" value="1" <?php  if($contract_details[status]=="Signed_Off") echo "checked" ?>>
-																		Pass Sign off
+																		Approve
 																		<span></span>
 														</label>
 													</td>
 													<td>
 														<label class="m-radio">
 																		<input type="radio" name="signoff" value="2" <?php  if($contract_details[status]=="Fail_Signoff")echo "checked" ?>>
-																		Fail Sign off
+																		Disapprove
 																		<span></span>
 														</label>
 													</td>
@@ -600,6 +864,14 @@
 																Comment
 															</label>
 															<textarea class="form-control m-input" id="exampleTextarea" rows="3" name="signoff_comment"></textarea>></textarea>
+														</div>
+													</td>
+													<td>
+														<div class="form-group">
+															<label class="">
+																Upload file:
+															</label>
+															<input type="file" class="form-control m-input" placeholder="Enter contact number" name="signoff_doc"  >
 														</div>
 													</td>
 													
@@ -612,73 +884,6 @@
 									</div>
 									<?php } ?>
 										
-										
-										
-															<!--<div class="m-radio-list">
-																	<label class="m-radio">
-																		<input type="radio" name="example_1" value="1">
-																		Option 1
-																		<span></span>
-																	</label>
-																	<label class="m-radio">
-																		<input type="radio" name="example_1" value="2">
-																		Option 2
-																		<span></span>
-																	</label>
-																	<label class="m-radio m-radio--disabled">
-																		<input type="radio" disabled>
-																		Disabled
-																		<span></span>
-																	</label>
-																	<label class="m-radio">
-																		<input type="radio" checked="checked">
-																		Checked
-																		<span></span>
-																	</label>
-																</div>-->
-								
-								<!--<div class="m-portlet__body">
-									<div class="form-group m-form__group row">
-									<ul class="nav nav-tabs  m-tabs-line m-tabs-line--success" role="tablist">
-											<li class="nav-item m-tabs__item">
-												<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_tabs_6_1" role="tab">
-													<i class="la la-cloud-upload"></i>
-													Messages
-												</a>
-											</li>
-											<li class="nav-item m-tabs__item">
-												<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_tabs_6_2" role="tab">
-													<i class="la la-cog"></i>
-													Settings
-												</a>
-											</li>
-											
-											<li class="nav-item m-tabs__item">
-												<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_tabs_6_3" role="tab">
-													<i class="la la-puzzle-piece"></i>
-													Logs
-												</a>
-											</li>
-										</ul>
-										<div class="tab-content">
-										
-											<div class="tab-pane active" id="m_tabs_6_1" role="tabpanel" >
-												
-												
-												<span>content1 goes here</span>
-							
-											</div>
-											
-											
-											<div class="tab-pane" id="m_tabs_6_2" role="tabpanel">
-												Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever sin
-											</div>
-											<div class="tab-pane" id="m_tabs_6_3" role="tabpanel">
-												Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-											</div>
-										</div>
-									</div>
-								</div>-->
 										
 										
 								<input type="hidden" value="<?php echo $contract_details[status]  ?>" name="status"></input>
@@ -694,11 +899,11 @@
 												<div class="row">
 													<div class="col-lg-4"></div>
 													<div class="col-lg-4">
-													<?php if($role=="Legal Officer" &&($contract_details[status]=="Pending_Review" || $contract_details[status]=="Fail_Review" || $contract_details[status]=="Pending_Validation" || $contract_details[status]=="Fail_Validation" || $contract_details[status]=="Pending_Signoff" || $contract_details[status]=="Fail_Signoff")){ ?>
+													<?php if($role=="Legal Officer" &&($contract_details[status]=="Pending_Review" || $contract_details[status]=="Fail_Review" || $contract_details[status]=="Pending_Creation" || $contract_details[status]=="Fail_Creation" || $contract_details[status]=="Pending_Signoff" || $contract_details[status]=="Fail_Signoff")){ ?>
 														<button type="submit" class="btn m-btn--pill m-btn--air         btn-primary m-btn--wide" >
 															Save Changes
 														</button>
-													<?php } else if($role=="Contract Requester" && ($contract_details[status]=="Fail_Review" || $contract_details[status]=="Fail_Validation" || $contract_details[status]=="Fail_Signoff")) { ?>
+													<?php } else if($role=="Contract Requestor" && ($contract_details[status]=="Fail_Review" || $contract_details[status]=="Fail_Creation" || $contract_details[status]=="Fail_Signoff")) { ?>
 														<button type="submit" id="btn-s" class="btn m-btn--pill m-btn--air         btn-primary m-btn--wide" style="display:none" >
 															Save Changes
 														</button>
@@ -715,8 +920,104 @@
 												</div>
 											</div>
 										</div>
+										
 									</form>
 									<!--end::Form-->
+										
+										
+										
+										<?php if($role=="Legal Officer" && ($contract_details[status]=="Signed_Off")){ ?>
+										
+										
+										<?php 
+											//check the signed document table if document has already been uploaded
+											$contract_id = $contract_details[id];
+											$query = $this->db->query("select id,path from signed_documents where contract_id='$contract_id'"); 
+										?>
+										<form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed" id="form_doc" enctype="multipart/form-data" accept-charset="utf-8" method="post">
+										
+										<div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit" >
+											<div class="m-form__actions m-form__actions--solid">
+												<div class="row">
+													
+													
+													<div class="col-lg-2">
+														<button type="button" class="btn m-btn--pill m-btn--air         btn-success m-btn--wide" id="btn_pdf">
+															Print to PDF
+														</button>
+												
+													</div>
+													
+													<?php if( $query->num_rows() < 1 ){ ?>
+													<div class="col-lg-3">
+														<!--<label class="">
+															Upload signed off form
+														</label>
+														<input type="file" class="form-control m-input" placeholder="Enter contact number" name="signed_doc" >-->
+										
+														<label class="custom-file">
+														<input type="file" id="file2" class="custom-file-input" name="signed_doc" required>
+														<span class="custom-file-control">Upload Signed off form</span>
+														</label>
+													</div>
+													
+													
+													<div class="col-lg-2">
+														
+															<input type="hidden" id="insertId3" name="insertId3" value="<?php  echo $contract_details[id] ; ?>"></input>
+															
+															<button type="submit" class="btn m-btn--pill m-btn--air         btn-success m-btn--wide" id="btn_upload">
+																Save
+															</button>
+													</div>
+													
+													<div class="col-lg-5"id="doc_data">
+													
+													</div>
+													<?php } ?>
+													
+													<div class="col-lg-5">
+													
+														
+																	<?php $i=1; foreach($query->result() as $value) { ?>
+																									
+																	
+																			<a href="<?php echo site_url('App/download_signed_documents/'.$value->id)  ?>" class="btn btn-accent m-btn m-btn--icon m-btn--pill m-btn--air">
+																				<span>
+																					<i class="la la-download"></i>
+																					<span>
+																						Download Signed Document
+																					</span>
+																				</span>
+																			</a>
+																		
+																	<?php $i++; } ?>
+																	
+																
+													
+													</div>
+													
+													
+													
+													
+													<div class="col-lg-4">
+														<div style="font-weight:bold; font-size:17px; 	display:none" id="loader_doc">
+														<img src="<?php echo base_url()."assets/img/page-loader.gif" ?>" class="img-responsive" style="width:80px; ">
+														PLEASE WAIT .....
+														</div>
+														
+													</div>
+												</div>
+											</div>
+										</div>
+										</form>
+										<?php } ?>
+										
+										
+										
+										
+										
+									
 								</div>
 								<!--end::Portlet-->
 							
@@ -733,7 +1034,42 @@
 					
 					
 			<script type="text/javascript" src="<?php echo base_url('assets/') ?>js/plugins/jquery/jquery.min.js"></script>	
+			
+				
+			
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+			<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 
+<script>
+$('#btn_pdf').click(function () {
+	
+	CreatePDFfromHTML();
+});
+function CreatePDFfromHTML() {
+    var HTML_Width = $(".html-content").width();
+    var HTML_Height = $(".html-content").height();
+    var top_left_margin = 15;
+    var PDF_Width = HTML_Width + (top_left_margin * 2);
+    var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+    var canvas_image_width = HTML_Width;
+    var canvas_image_height = HTML_Height;
+
+    var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+    html2canvas($(".html-content")[0]).then(function (canvas) {
+        var imgData = canvas.toDataURL("image/jpeg", 1.0);
+        var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+        pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+        for (var i = 1; i <= totalPDFPages; i++) { 
+            pdf.addPage(PDF_Width, PDF_Height);
+            pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
+        }
+        pdf.save("Your_PDF_Name.pdf");
+        $(".html-content").hide();
+    });
+}
+			
+</script>
 						
 <script>
 	
@@ -746,7 +1082,9 @@
 		
 	$('#form_contract').submit(function(e) {
 		e.preventDefault();
-		 $('#loader_doc').css("display","block");
+		$('#loader_doc').css("display","block");
+		
+			$('#activity').removeAttr('disabled');//remove disabled attribute from dropdown so it can read using php post method
 		
             var data = new FormData(this); // <-- 'this' is your form element
             $.ajax({
@@ -773,6 +1111,7 @@
 							//Display modal for successful update
 							$('#modal-user').modal('show');
 							setTimeout(function(){redirect_view()},3000);
+							//alert(response.trim());
 							
 						 }
                      } 
@@ -787,13 +1126,152 @@
                         },20000);
                     } 
                 }
-            });  
+            }); 
 			
 			
         }); 
 		
 		
+		
+		//this jquery hide a div section based on "Document Type" dropdown selected item when the page loads
+		
+		var doc_type = $("#document_type").val();
+		if(doc_type == "Letter")
+		{
+			//hide contract terms and other information block
+				$("#wrapper-box").hide();
+				
+				//show purpose of letter section here
+				$("#wrapper-box-2").show();
+		}
+		else
+		{
+			//show contract terms and other information block
+				$("#wrapper-box").show();
+				
+				//hide purpose of letter section here
+				$("#wrapper-box-2").hide();
+		}
+		
+		
+		
+		//this jquery hide a div section based on "Document Type" dropdown selection
+		$('#document_type').on('change', function() {
+			if ( this.value == 'Letter')
+			{
+				//hide contract terms and other information block
+				$("#wrapper-box").hide();
+				
+				//show purpose of letter section here
+				$("#wrapper-box-2").show();
+				
+			}
+			else
+			{
+				//show contract terms and other information block
+				$("#wrapper-box").show();
+				
+				//hide purpose of letter section here
+				$("#wrapper-box-2").hide();
+			}
+		});
+		
+		/* auto computes duration when contract start and end date is selected*/
+		var startDate=0; var endDate=0;
+		
+		$("#m_datepicker_1").on('change', function(event) {
+			event.preventDefault();
+			
+			$startDate = new Date(this.value); //get the start date
+			$endDate = new Date($("#m_datepicker_2").val()); //get the end date
+			
+			
+				//compute the month difference
+				var $months = ($endDate.getMonth() - $startDate.getMonth()) + 1 + (12 * ($endDate.getFullYear() - $startDate.getFullYear()));
+				$months = $months-1 ; //subtract 1 month for accuracy
+					
+				if($months>=1)
+				{
+					var $year = Math.floor($months/12); //get the year part
+					var $noMonths = $months % 12 ;
+					$("#contract_duration").val($year+" year(s), "+$noMonths+" month(s)");
+				}
+				else if($months<1)
+				{
+					alert("Minimum contract duration is 1 month");
+				}
+			
+		});
+		
+		$("#m_datepicker_2").on('change', function(event) {
+			event.preventDefault();
+			
+			$endDate = new Date(this.value); //get the end date
+			$startDate = new Date($("#m_datepicker_1").val()); //get the start date
+			
+			//compute the month difference
+			var $months = ($endDate.getMonth() - $startDate.getMonth()) + 1 + (12 * ($endDate.getFullYear() - $startDate.getFullYear()));
+			$months = $months-1 ; //subtract 1 month for accuracy
+			
+			if($months>=1)
+			{
+				var $year = Math.floor($months/12); //get the year part
+				var $noMonths = $months % 12 ;
+				$("#contract_duration").val($year+" year(s), "+$noMonths+" month(s)");
+			}
+			else if($months<1)
+			{
+				alert("Minimum contract duration is 1 month");
+			}
+				
+		});
+		
+		
 	});
+
+
+		//This handles the upload of signed-off form after a request is signed off
+		$('#form_doc').submit(function(e) {
+		e.preventDefault();
+		
+		 $('#loader_doc').css("display","block");
+		 $('#doc_error').css("display","block");
+		 
+		
+            var data = new FormData(this); // <-- 'this' is your form element
+            $.ajax({
+                url: "<?php echo site_url(); ?>/app/insertSignedDocuments",
+                data: data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: "POST",
+                success: function(response) {
+                    if(response.trim()==("Document Name is required").trim() || response.trim()==("You must upload atleast one document").trim() || response.trim()==("File is too large max size is 70MB").trim())
+                    {
+                         $('#loader_doc').css("display","none");
+						$('#doc_error').html(response);
+						setTimeout(function(){
+                           $('#doc_error').hide();
+                        },5000);
+						
+                     } 
+                    else
+                    {
+						
+                         $('#loader_doc').css("display","none");
+						$('#doc_data').html(response); //
+						alert("Document Uploaded Successfully");
+						$('#form_doc')[0].reset();
+						//$('#doc_error').show().html(response);
+                         
+                    } 
+                }
+            });
+        }); 
+
+
+
 
 </script>
 					
@@ -808,3 +1286,4 @@
 				$('#btn-s').css("display","block");
 				}
 			</script>
+			

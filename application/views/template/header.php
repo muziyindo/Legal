@@ -27,6 +27,25 @@
 		<link href="<?php echo base_url('assets/demo/default/base/custom.css') ?>" rel="stylesheet" type="text/css" />
 		<!--end::Base Styles -->
 		<link rel="shortcut icon" href="<?php echo base_url('assets/demo/default/media/img/logo/favicon.ico') ?>" />
+		
+		<?php if($title=="View_Documents" || $title=="View_Contracts"){ ?>
+		<!--<link href="<?php echo base_url('assets/vendors/base/bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />-->
+		<link href="<?php echo base_url('assets/vendors/base/dataTables.bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
+		<?php } ?>
+		
+		<style>
+			html {
+  font-size: 0.8em;
+}
+
+p {
+  font-size: 12px;
+}
+
+p span {
+  font: 12px "Fira Sans", sans-serif;
+}
+		</style>
 	</head>
 	<!-- end::Head -->
 	<!-- end::Body -->

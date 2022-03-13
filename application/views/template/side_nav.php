@@ -25,9 +25,9 @@
 												Dashboard
 											</span>
 											<span class="m-menu__link-badge">
-												<span class="m-badge m-badge--danger">
+												<!--<span class="m-badge m-badge--danger">
 													2
-												</span>
+												</span>-->
 											</span>
 										</span>
 									</span>
@@ -43,7 +43,7 @@
 								<a  href="#" class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-layers"></i>
 									<span class="m-menu__link-text">
-										New Contract
+										New Document
 									</span>
 									<i class="m-menu__ver-arrow la la-angle-right"></i>
 								</a>
@@ -63,7 +63,7 @@
 													<span></span>
 												</i>
 												<span class="m-menu__link-text">
-													Add Contract
+													Add
 												</span>
 											</a>
 										</li>
@@ -79,7 +79,7 @@
 								<a  href="#" class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-share"></i>
 									<span class="m-menu__link-text">
-										View Contracts
+										View Documents
 									</span>
 									<i class="m-menu__ver-arrow la la-angle-right"></i>
 								</a>
@@ -102,7 +102,7 @@
 													<span></span>
 												</i>
 												<span class="m-menu__link-text">
-													Pending Validation
+													Pending Creation
 												</span>
 											</a>
 										</li>
@@ -131,7 +131,44 @@
 								</div>
 							</li>
 							
-							<?php if($this->session->userdata('role') == "Admin"){ ?>
+							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
+								<a  href="#" class="m-menu__link m-menu__toggle">
+									<i class="m-menu__link-icon flaticon-share"></i>
+									<span class="m-menu__link-text">
+										File Management
+									</span>
+									<i class="m-menu__ver-arrow la la-angle-right"></i>
+								</a>
+								<div class="m-menu__submenu">
+									<span class="m-menu__arrow"></span>
+									<ul class="m-menu__subnav">
+										<li class="m-menu__item " aria-haspopup="true" >
+											<a  href="<?php echo site_url('App/uploadDoc') ?>" class="m-menu__link ">
+												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+													<span></span>
+												</i>
+												<span class="m-menu__link-text">
+													Upload
+												</span>
+											</a>
+										</li>
+										<li class="m-menu__item " aria-haspopup="true" >
+											<a  href="<?php echo site_url('App/documents') ?>" class="m-menu__link ">
+												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+													<span></span>
+												</i>
+												<span class="m-menu__link-text">
+													View
+												</span>
+											</a>
+										</li>
+										
+										
+									</ul>
+								</div>
+							</li>
+							
+							<?php if($this->session->userdata('role') == "Admin" || $this->session->userdata('role') == "Legal Officer"){ ?>
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 								<a  href="#" class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-share"></i>
@@ -192,7 +229,7 @@
 				
 				<!---Page Title----->
 				
-				<div class="m-grid__item m-grid__item--fluid m-wrapper">
+				<div class="m-grid__item m-grid__item--fluid m-wrapper html-content">
 					<!-- BEGIN: Subheader -->
 					<div class="m-subheader ">
 						<div class="d-flex align-items-center">
@@ -206,9 +243,9 @@
 									<?php } ?>
 									
 									<?php if($title=="Contract Details"){ ?>
-										<?php if($role=="Contract Requester"){ ?>
+										<?php if($role=="Contract Requestor"){ ?>
 										
-											<?php if($contract_details[status]=="Fail_Review" || $contract_details[status]=="Fail_Validation" || $contract_details[status]=="Fail_Signoff"){ ?>
+											<?php if($contract_details[status]=="Fail_Review" || $contract_details[status]=="Fail_Creation" || $contract_details[status]=="Fail_Signoff"){ ?>
 												<button type="button" class="btn m-btn--pill    btn-metal" onclick="disableall1()">Edit</button>
 											<?php } ?>
 											

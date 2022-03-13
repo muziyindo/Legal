@@ -1,4 +1,10 @@
 </div>
+
+	
+      
+
+
+
 			
 			</div>
 			<!-- end:: Body -->
@@ -86,7 +92,7 @@
 		<script src="<?php echo base_url('assets/demo/default/base/scripts.bundle.js') ?>" type="text/javascript"></script>
 		<!--end::Base Scripts -->
 		
-		<?php if($page_title == "New Contract" || $title="Contract Details"){ ?>
+		<?php if($page_title == "New Document" || $title=="Contract Details"){ ?>
 			<script src="<?php echo base_url('assets/demo/default/custom/components/forms/widgets/bootstrap-datepicker.js') ?>" type="text/javascript"></script>
 		
 		<?php }	?>
@@ -95,6 +101,20 @@
 		
 		<!--begin::Page Snippets -->
 		<script src="<?php echo base_url('assets/app/js/dashboard.js') ?>" type="text/javascript"></script>
+					
+					<?php if($title=="View_Documents" || $title=="View_Contracts"){ ?>
+					<!--<script src="<?php echo base_url('assets/vendors/base/jquery-3.5.1.js') ?>" type="text/javascript"></script>-->
+					<script src="<?php echo base_url('assets/vendors/base/jquery.dataTables.min.js') ?>" type="text/javascript"></script>
+					<script src="<?php echo base_url('assets/vendors/base/dataTables.bootstrap.min.js') ?>" type="text/javascript"></script>
+					
+					<script>
+					$(document).ready(function() {
+						$('#example').DataTable();
+						
+					} );
+					</script>
+					
+					<?php } ?>
 		
 		<!--end::Page Snippets -->
 	</body>

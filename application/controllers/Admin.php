@@ -22,7 +22,7 @@ class Admin extends CI_Controller
         }
 		else
         {
-        	if($role != "Admin")
+        	if($role != "Admin" && $role != "Legal Officer")
         	{
         		redirect('Account','refresh');
         	}

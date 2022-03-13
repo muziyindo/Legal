@@ -43,7 +43,7 @@
 								<!--begin::Section-->
 								<div class="m-section">
 									<div class="m-section__content">
-										<table class="table table-bordered table-striped <!--m-table m-table--border-brand m-table--head-bg-brand-->">
+										<table id="example" class="table table-bordered table-striped <!--m-table m-table--border-brand m-table--head-bg-brand-->" >
 											<thead>
 												<tr>
 													<th>
@@ -51,6 +51,12 @@
 													</th>
 													<th>
 														Requester
+													</th>
+													<th>
+														Document Type
+													</th>
+													<th>
+														Activity
 													</th>
 													<th>
 														Other Party
@@ -64,9 +70,7 @@
 													<th>
 														End Date
 													</th>
-													<th>
-														Termination Notice
-													</th>
+													
 													<th>
 														Status
 													</th>
@@ -85,6 +89,12 @@
 														<?php echo $contract->requester_name; ?>
 													</td>
 													<td>
+														<?php echo $contract->document_type; ?>
+													</td>
+													<td>
+														<?php echo $contract->activity; ?>
+													</td>
+													<td>
 														<?php echo $contract->other_party_name; ?>
 													</td>
 													<td>
@@ -96,9 +106,7 @@
 													<td>
 														<?php echo $contract->proposed_end_date; ?>
 													</td>
-													<td>
-														<?php echo $contract->termination_notice; ?>
-													</td>
+													
 													<td>
 														<?php echo $contract->status; ?>
 													</td>
