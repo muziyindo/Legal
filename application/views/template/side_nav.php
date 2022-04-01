@@ -167,8 +167,19 @@
 									</ul>
 								</div>
 							</li>
+
+							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
+								<a  href="<?php echo site_url('app/changePassword') ?>" class="m-menu__link m-menu__toggle">
+									<i class="m-menu__link-icon flaticon-share"></i>
+									<span class="m-menu__link-text">
+										Change Password
+									</span>
+									<!--<i class="m-menu__ver-arrow la la-angle-right"></i>-->
+								</a>
+							</li>
 							
-							<?php if($this->session->userdata('role') == "Admin" || $this->session->userdata('role') == "Legal Officer"){ ?>
+							<?php //if($this->session->userdata('role') == "Admin" || $this->session->userdata('role') == "Legal Officer"){ ?>
+							<?php if($this->session->userdata('role') == "Admin"){ ?>
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 								<a  href="#" class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-share"></i>

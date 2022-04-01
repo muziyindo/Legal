@@ -108,7 +108,7 @@
 														<span class="input-group-addon">
 															<i class="la la-user"></i>
 														</span>
-														<input type="text" name="requester_name" class="form-control m-input" placeholder="" value="<?php  echo $contract_details[requester_name] ?>">
+														<input type="text" name="requester_name" class="form-control m-input" placeholder="" value="<?php  echo $contract_details[requester_name] ?>" readonly>
 													</div>
 													<span class="m-form__help">
 														Please enter your fullname
@@ -125,23 +125,31 @@
 														<option value="BDD" <?php  if($contract_details[requester_dept]=="BDD")echo "selected" ?>>BDD</option>
 														<option value="Executives" <?php  if($contract_details[requester_dept]=="Executives")echo "selected" ?>>Executives</option>
 														
-														
 														<option value="Systems" <?php  if($contract_details[requester_dept]=="Systems")echo "selected" ?>>Systems</option>
 														<option value="Pre-Sales" <?php  if($contract_details[requester_dept]=="Pre-Sales")echo "selected" ?>>Pre-Sales</option>
 														<option value="DCM" <?php  if($contract_details[requester_dept]=="DCM")echo "selected" ?>>DCM</option>
 														<option value="Access Network" <?php  if($contract_details[requester_dept]=="Access Network")echo "selected" ?>>Access Network</option>
 														<option value="Field Service" <?php  if($contract_details[requester_dept]=="Field Service")echo "selected" ?>>Field Service</option>
 														<option value="Admin" <?php  if($contract_details[requester_dept]=="Admin")echo "selected" ?>>Admin</option>
-														
-														
-														
-														
-														
-														
-														
+													
 													</select>
 													<span class="m-form__help">
 														Please select your department
+													</span>
+												</div>
+
+												<div class="col-lg-4">
+													<label>
+														Email:
+													</label>
+													<div class="input-group m-input-group m-input-group--square">
+														<span class="input-group-addon">
+															<i class="la la-user"></i>
+														</span>
+														<input type="text" id="requester_email" name="requester_email" class="form-control m-input" placeholder="" value="<?php  echo $contract_details[requester_email] ?>" readonly>
+													</div>
+													<span class="m-form__help">
+														Please enter your fullname
 													</span>
 												</div>
 											</div>
@@ -1085,6 +1093,8 @@ function CreatePDFfromHTML() {
 		$('#loader_doc').css("display","block");
 		
 			$('#activity').removeAttr('disabled');//remove disabled attribute from dropdown so it can read using php post method
+			$('#requester_email').removeAttr('disabled');//remove disabled attribute from dropdown so it can read using php post method
+			
 		
             var data = new FormData(this); // <-- 'this' is your form element
             $.ajax({
@@ -1125,7 +1135,10 @@ function CreatePDFfromHTML() {
                             $('#doc_error').hide();
                         },20000);
                     } 
+					//alert(response.trim());
                 }
+
+
             }); 
 			
 			

@@ -177,6 +177,7 @@ class App_model extends CI_Model
 		"requester_id" =>$this->session->userdata('userid'), 
 		"requester_title" =>$this->input->post('requester_title'),  
 		"requester_name" =>$this->input->post('requester_name'),
+		"requester_email" =>$this->input->post('requester_email'),
 		"requester_dept" =>$this->input->post('requester_dept'),
 		"other_party_title" =>$this->input->post('other_party_title'),
 		"other_party_name" =>$this->input->post('other_party_name'),
@@ -266,6 +267,8 @@ class App_model extends CI_Model
 	function updateContract($id)
 	{
 		$role = $this->session->userdata('role');
+		$requester_email = $this->input->post('requester_email');
+
 		if($role == "Legal Officer")
 		{
 			$activity = $this->input->post('activity');
@@ -293,7 +296,7 @@ class App_model extends CI_Model
 				$this->db->query("update contract set status='Pending_Signoff',review_comment='$review_comment' where id='$id'");
 				
 				$status="Pending_Signoff";
-				$this->notify($activity,$status);
+				$this->notify($activity,$status, $requester_email );
 				
 				//upload review comment doc
 				$storeFolder = './uploads/contracts/';
@@ -329,14 +332,14 @@ class App_model extends CI_Model
 				$this->db->query("update contract set status='Fail_Review', review_comment='$review_comment' where id='$id'");
 				
 					$status="Fail_Review";
-					$this->notify($activity,$status);
+					$this->notify($activity,$status, $requester_email);
 				
 				} else if($activity=="Creation"){
 				//update as fail creation
 				$this->db->query("update contract set status='Fail_Creation', review_comment='$review_comment' where id='$id'");
 				
 					$status="Fail_Creation";
-					$this->notify($activity,$status);
+					$this->notify($activity,$status, $requester_email);
 				}
 				
 				
@@ -374,7 +377,7 @@ class App_model extends CI_Model
 				$this->db->query("update contract set status='Signed_Off', signoff_comment='$signoff_comment' where id='$id'");
 				
 				$status="Signed_Off";
-				$this->notify($activity,$status);
+				$this->notify($activity,$status, $requester_email);
 				
 				//upload signoff comment doc
 				$storeFolder = './uploads/contracts/';
@@ -407,7 +410,7 @@ class App_model extends CI_Model
 				$this->db->query("update contract set status='Fail_Signoff', signoff_comment='$signoff_comment' where id='$id'");
 				
 				$status="Fail_Signoff";
-				$this->notify($activity,$status);
+				$this->notify($activity,$status, $requester_email);
 				
 				//upload signoff comment doc
 				$storeFolder = './uploads/contracts/';
@@ -459,6 +462,7 @@ class App_model extends CI_Model
 			"requester_id" =>$this->session->userdata('userid'), 
 			"requester_title" =>$this->input->post('requester_title'),  
 			"requester_name" =>$this->input->post('requester_name'),
+			"requester_email" =>$this->input->post('requester_email'),
 			"requester_dept" =>$this->input->post('requester_dept'),
 			"other_party_title" =>$this->input->post('other_party_title'),
 			"other_party_name" =>$this->input->post('other_party_name'),
@@ -483,7 +487,10 @@ class App_model extends CI_Model
 			return $this->db->update('contract', $data);
 			
 		}
+
 	}
+
+
 	
 	//for document upload section
 	function getDocuments()
@@ -499,13 +506,32 @@ class App_model extends CI_Model
 		$query = $this->db->query($sql);
 		return $query->result();
 	}
+
+	function get_old_password($id)
+  {
+    
+    $query = $this->db->query("select * from users where id='$id'"); //get a member detail  whose column id = $id
+    return $query->row_array();
+  }
+
+  function update_password($id)
+  {
+	$new_password = $this->input->post('new_password');
+	$hashed_password = password_hash($new_password,PASSWORD_DEFAULT);
+    
+    $data = array(
+    'password' => $hashed_password);
+    $this->db->where('id', $id);
+	return $this->db->update('users', $data);
+  }
 	
-	function notify($activity,$status)
+	function notify($activity,$status,$requester_email)
 	{
 		
 		
 		//$action = $this->input->post('activity');
-		$officer_name = "Legal Officer";
+		
+		//$officer_name = "Legal Officer";
 		$officer_email = "m.dauda@netcomafrica.com";
 		
 		if($status=="Pending_Signoff")
@@ -543,7 +569,7 @@ class App_model extends CI_Model
 			$subject = 'Contract '.$activity.' / Sign off rejected';
 		}
 		
-		$config = Array(
+		/*$config = Array(
 		'protocol' => 'smtp',
 		'smtp_host' => 'mail.wtcooperative.com',
 		'smtp_port' => 25,
@@ -565,11 +591,38 @@ class App_model extends CI_Model
 		$this->email->message($message);
 		$this->email->send();
 		//echo 1 ;
-		/*if ($this->email->send()) {
-           echo 1 ;
-		} else {
-           show_error($this->email->print_debugger());
-		}*/
+		//if ($this->email->send()) {
+        //   echo 1 ;
+		//} else {
+        //   show_error($this->email->print_debugger());
+		//}
+		*/
+
+		$config = Array(
+			'protocol' => 'smtp',
+			'smtp_host' => 'smtp.googlemail.com',
+			'smtp_port' => 587,
+			'smtp_user' => 'netcomlegal@gmail.com',
+			'smtp_pass' => 'N3tc0m@123__',
+			'mailtype'  => 'html', 
+			'charset'   => 'iso-8859-1',
+			'wordwrap'	=> TRUE,
+			'smtp_crypto'	=> 'tls'
+			);
+			$this->load->library('email', $config);
+			$this->email->set_newline("\r\n");
+		
+			$this->email->from('notification@netcomafrica.com', 'Netcom Africa Limited');
+			//$list = array('mdauda@otandtconsulting.com','dr_da4real@yahoo.com');
+			$this->email->to($requester_email); //();
+			//$this->email->cc('dr_da4real@yahoo.com');//sales supervisor will be added here.
+			//$this->email->reply_to('my-email@gmail.com', 'Explendid Videos');
+			$this->email->subject($subject);
+			$this->email->message($message);
+			$this->email->send();
+			//echo $this->email->print_debugger();
+
+
 	}
 	
 	
@@ -581,7 +634,7 @@ class App_model extends CI_Model
 		$message='Hi '.$officer_name.'<p>You have a contract request pending '.$action.'. Kindly login to the legal platform to action it.</p><p>Regards,</p><p>Netcom Africa</p>';
 		$requester = $this->session->userdata('name');
 		
-		$config = Array(
+		/*$config = Array(
 		'protocol' => 'smtp',
 		'smtp_host' => 'mail.wtcooperative.com',
 		'smtp_port' => 25,
@@ -602,13 +655,41 @@ class App_model extends CI_Model
 		$this->email->subject('Contract '.$action.' request from '.$requester.' pending');
 		$this->email->message($message);
 		$this->email->send();
-		echo 1 ;
-		/*if ($this->email->send()) {
+		//echo 1 ;
+		if ($this->email->send()) {
            echo 1 ;
 		} else {
            show_error($this->email->print_debugger());
 		}*/
+
+		$config = Array(
+			'protocol' => 'smtp',
+			'smtp_host' => 'smtp.googlemail.com',
+			'smtp_port' => 587,
+			'smtp_user' => 'netcomlegal@gmail.com',
+			'smtp_pass' => 'N3tc0m@123__',
+			'mailtype'  => 'html', 
+			'charset'   => 'iso-8859-1',
+			'wordwrap'	=> TRUE,
+			'smtp_crypto'	=> 'tls'
+			);
+			$this->load->library('email', $config);
+			$this->email->set_newline("\r\n");
+		
+			$this->email->from('notification@netcomafrica.com', 'Netcom Africa Limited');
+			$list = array('m.dauda@netcomafrica.com');
+			//$list = array('o.olarewaju@netcomafrica.com','c.eki@netcomafrica.com','n.jacob@netcomafrica.com');
+			$this->email->to($list); //();
+			//$this->email->cc('dr_da4real@yahoo.com');//sales supervisor will be added here.
+			//$this->email->reply_to('my-email@gmail.com', 'Explendid Videos');
+			$this->email->subject('Contract '.$action.' request from '.$requester.' pending');
+			$this->email->message($message);
+			$this->email->send();
+			//echo $this->email->print_debugger();
+		
 	}
+	
+	
 }
 	
 	

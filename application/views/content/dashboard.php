@@ -188,7 +188,11 @@
 													<span class="m-widget25__progress-number">
 														<?php 
 															$ongoingCount = ($signedoffCount/$totalCount)*100 ;
-															echo round($ongoingCount) ; 
+
+															if(is_nan($ongoingCount))
+																echo 0 ;
+															else
+																echo round($ongoingCount) ; 
 														
 														?> %
 													</span>
@@ -206,7 +210,11 @@
 														
 														$totalPendingCount = $pendingReviewCount + $pendingValidationCount + $pendingSignoffCount + $failValidationCount + $failReviewCount + $failSignoffCount; 
 														$processingCount = ($totalPendingCount/$totalCount) * 100 ;
-														echo round($processingCount) ;
+
+														if(is_nan($processingCount))
+															echo 0;
+														else
+															echo round($processingCount) ;
 														
 														
 														?> %
@@ -223,7 +231,11 @@
 													<span class="m-widget25__progress-number">
 														<?php 
 														$expiredCount_ = ($expiredCount/$totalCount)*100 ; 
-														echo $expiredCount_ ;
+
+														if(is_nan($expiredCount_))
+															echo 0 ;
+														else
+															echo $expiredCount_ ;
 														
 														?> %
 													</span>

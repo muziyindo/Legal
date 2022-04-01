@@ -982,6 +982,55 @@ class App extends CI_Controller
 		return strtoupper(implode('', $temp_array));
 	}
 	
+	function changePassword()
+	{
+		$userid = $this->session->userdata('userid');
+		$data['title'] = 'Change Your Password';
+		$data['page_title'] = 'Change Password';
+		$data['userid'] = $userid ;
+		$this->load_view($data,$content='change_password');	
+	}
+
+	function updatePassword($id)
+	{
+		//$this->form_validation->set_error_delimiters('<div class="error" style="color: red">', '</div>');
+		$this->form_validation->set_message('matches', 'Passwords do not match');
+		$this->form_validation->set_message('required', 'The %s field must be filled');
+		$this->form_validation->set_rules('old_password', 'Old Password', 'required');
+		$this->form_validation->set_rules('new_password', 'New Password', 'trim|required|min_length[6]|matches[retype_password]');
+        $this->form_validation->set_rules('retype_password', 'Password Confirmation', 'required');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+			//$this->addUser();
+			echo validation_errors();
+		}
+		else
+		{
+			$old_password_db=$this->app_model->get_old_password($id);
+			//$old_password_db=$this->encrypt->decode($old_password_db['password']);
+			 $old_password=$this->input->post('old_password');
+			 $verify = password_verify($old_password,$old_password_db['password']);
+			if($verify==1)
+			{
+			  $this->app_model->update_password($id); 
+
+			  $num_inserts = $this->db->affected_rows();
+			  if($num_inserts=="0")
+			  {
+				echo 1 ;
+			  }
+			  else
+			  {
+				echo 1 ;
+			  }
+			}
+			else
+			{
+			   echo "The old password entered is incorrect";
+			}
+		}
+	}
 	
 	function load_view($data,$content)
 	{
@@ -1001,7 +1050,7 @@ class App extends CI_Controller
 		$message='Hi '.$officer_name.'<p>You have a contract request pending '.$action.'. Kindly login to the legal platform to action it.</p><p>Regards,</p><p>Netcom Africa</p>';
 		$requester = $this->session->userdata('name');
 		
-		$config = Array(
+		/*$config = Array(
 		'protocol' => 'smtp',
 		'smtp_host' => 'mail.wtcooperative.com',
 		'smtp_port' => 25,
@@ -1023,13 +1072,44 @@ class App extends CI_Controller
 		$this->email->message($message);
 		$this->email->send();
 		echo 1 ;
-		/*if ($this->email->send()) {
+		if ($this->email->send()) {
            echo 1 ;
 		} else {
            show_error($this->email->print_debugger());
 		}*/
+
+
+		$config = Array(
+			'protocol' => 'smtp',
+			'smtp_host' => 'smtp.googlemail.com',
+			'smtp_port' => 587,
+			'smtp_user' => 'netcomlegal@gmail.com',
+			'smtp_pass' => 'N3tc0m@123__',
+			'mailtype'  => 'html', 
+			'charset'   => 'iso-8859-1',
+			'wordwrap'	=> TRUE,
+			'smtp_crypto'	=> 'tls'
+			);
+			$this->load->library('email', $config);
+			$this->email->set_newline("\r\n");
 		
-	
+			$this->email->from('notification@netcomafrica.com', 'Netcom Africa Limited');
+			$list = array('m.dauda@netcomafrica.com');
+			//$list = array('o.olarewaju@netcomafrica.com','c.eki@netcomafrica.com','n.jacob@netcomafrica.com');
+			$this->email->to($list); //();
+			//$this->email->cc('dr_da4real@yahoo.com');//sales supervisor will be added here.
+			//$this->email->reply_to('my-email@gmail.com', 'Explendid Videos');
+			$this->email->subject('Contract '.$action.' request from '.$requester.' pending');
+			$this->email->message($message);
+			$this->email->send();
+			echo 1 ;
+			// if ($this->email->send()) {
+			// 	echo 1 ;
+			//  } else {
+			// 	show_error($this->email->print_debugger());
+			//  }
+			
+			
 	}
 	
 	
